@@ -15,16 +15,16 @@ while ($b=mysql_fetch_array($sql)) {
 	$project1=$b['project'];
 	$miniproject1=$b['miniproject'];
 	$certification1=$b['certification'];
-     $sy11=$b['sy1'];
-    $py11=$b['py1'];
-    $Hname1=$b['Hname'];
-    $py21=$b['py2'];
-    $sname1=$b['sname'];
-    $py31=$b['py3'];
+  $sy11=$b['sy1'];
+  $py11=$b['py1'];
+  $Hname1=$b['Hname'];
+  $py21=$b['py2'];
+  $sname1=$b['sname'];
+  $py31=$b['py3'];
 	$address1=$b['address'];
-    $obj1=$b['obj'];
-    $lang=$b['langu'];
-    $publication=$b['publication'];
+  $obj1=$b['obj'];
+  $lang=$b['langu'];
+  $publication=$b['publication'];
 }
 if(isset($_POST['update']))
 {
@@ -32,7 +32,7 @@ if(isset($_POST['update']))
         $project=$_POST['project'];
         $miniproject=$_POST['miniproject'];
         $certification=$_POST['certification'];
-    $publication=$_POST['publication'];
+        $publication=$_POST['publication'];
         $langu=$_POST['langu'];
         $obj=$_POST['obj'];
         $sql=mysql_query("select * from resume where reg_id='$reg_id'");
@@ -41,8 +41,6 @@ if(isset($_POST['update']))
         {
         mysql_query("update resume set address='$address',project='$project',miniproject='$miniproject',certification='$certification',langu='$langu',obj='$obj',publication='$publication' where reg_id='$reg_id' ");
         }
-
-
 }
 
 
