@@ -16,7 +16,7 @@ if(isset($_POST['login']))
 			mysql_query("update user set password='$password' where smartcard_no='$smartcard_no'");
 			$success='Password successfully changed';
 		}
-		
+
 	}
 	else {
 		$error='Invalid combination of Registration id and password';
@@ -71,7 +71,7 @@ if(isset($_POST['login']))
       <a href="index.php"><b>Reset</b> Password</a>
   </div>
 <div class="login-box-body">
-    
+
       <form action="" method="post">
       <div class="form-group has-feedback">
         <input type="text" class="form-control" placeholder="Registration id" name="reg_id">
@@ -98,9 +98,9 @@ if(isset($_POST['login']))
     </div>
 </div>
     <footer class="footer">
-      <div class="container">
-        <p class="text-muted" style="padding-top:10px"><b>&copy; Shah and anchor kutchhi engineering college</b></p>
-      </div>
+<?php
+include 'footer.php';
+ ?>
     </footer>
 </body>
 </html>

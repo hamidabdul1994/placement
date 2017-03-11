@@ -30,10 +30,8 @@
     <![endif]-->
   </head>
   <body class="hold-transition login-page">
-      <!-- <div class="row">
-          <div class="col-md-12"><center><img src="header.png" ></center></div>
-        </div> -->
-        <div class="login-box" style=" margin-top:30px;">
+
+        <div class="login-box" >
 
           <div class="login-logo" >
 
@@ -69,7 +67,7 @@
     </div>
     <!-- /.login-box-body -->
   </div>
-      <footer class="main-footer footer" >
+      <footer style="margin-left:0px" align="center" class="main-footer footer" >
         <?php
         include 'footer.php';
          ?>
