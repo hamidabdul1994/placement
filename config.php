@@ -1,4 +1,4 @@
 <?php
 mysql_connect('localhost','root','root');
-mysql_select_db('placement');
+mysql_select_db('new_placement');
 ?>

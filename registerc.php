@@ -15,7 +15,7 @@ $count=mysql_num_rows($sql);
 if($count==1){
 	$x=mysql_fetch_array($sql);
 	$register=$x['register'];
-	
+
 	if($register=="n"){
 		if($current_date<=$deadline){
 		$status='y';
@@ -29,7 +29,7 @@ if($count==1){
 			   You have registered for <b>'.$company.'</b> .
 			</p>
 			 </div>
-			';	
+			';
 	}
 	else{
 	$deadline=date("d M, Y",strtotime($deadline));
@@ -41,9 +41,9 @@ if($count==1){
 			   Registrations closed for <b>'.$company.'</b> on <b>'.$deadline.'</b> .
 			</p>
 			 </div>
-			';	
-}	
-		
+			';
+}
+
 	}
 	else{
 		$out='
@@ -54,11 +54,11 @@ if($count==1){
 			   You have already registered for <b>'.$company.'</b> .
 			</p>
 			 </div>
-			';	
+			';
 	}
 
-	
-	
+
+
 }
 else{
 $out='
@@ -69,7 +69,7 @@ $out='
     You are not eligible to register for <b>'.$company.'</b> .
 </p>
  </div>
-';	
+';
 }
 
 ?>
@@ -103,11 +103,6 @@ h2{margin-top:0px}
 </style>
 </head>
 <body class="skin-blue sidebar-mini sidebar-collapse" style="background:#ecf0f5">
-
-
- 
-
-
     <!-- Main content -->
     <section class="content">
       <div class="error-page" style="margin-top:20%">
@@ -115,9 +110,6 @@ h2{margin-top:0px}
         <!-- /.error-content -->
       </div>
       <!-- /.error-page -->
-  
-
-
 
 <script src=" plugins/jQuery/jQuery-2.1.4.min.js"></script>
 <!-- Bootstrap 3.3.5 -->

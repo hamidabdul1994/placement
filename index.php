@@ -41,9 +41,9 @@
     <div class="login-box-body">
       <p class="login-box-msg">Sign in </p>
 
-      <form action="" method="post">
+      <form action="#" method="post">
         <div class="form-group has-feedback">
-          <input type="text" class="form-control" placeholder="Registration id" name="reg_id">
+          <input type="text" class="form-control" placeholder="Registration id" name="smartcard_no">
           <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
