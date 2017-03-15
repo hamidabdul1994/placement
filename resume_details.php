@@ -13,12 +13,12 @@ $sname1='';
 $py31='';
 $obj1='';
 $lang='';
-$reg_id=$_SESSION['login_user'];
-$sql=mysql_query("select * from user where reg_id='$reg_id'");
+$u_id=$_SESSION['login_user'];
+$sql=mysql_query("select * from user where u_id='$u_id'");
 while($x=mysql_fetch_array($sql)){
     $name=$x['uname'];
 }
-$sql=mysql_query("select * from resume where reg_id='$reg_id'");
+$sql=mysql_query("select * from resume where u_id='$u_id'");
 while ($a=mysql_fetch_array($sql)) {
 	$project1= ucfirst($a['project']);
 	$miniproject1=ucfirst($a['miniproject']);
@@ -31,7 +31,7 @@ while ($a=mysql_fetch_array($sql)) {
     $py31=$a['py3'];
 	$address1=ucfirst($a['address']);
     $obj1=ucfirst($a['obj']);
-    $lang=ucfirst($a['langu']);
+    $langu=ucfirst($a['langu']);
     $publication=ucfirst($a['publication']);
 }
 if(isset($_POST['update']))
@@ -49,20 +49,19 @@ if(isset($_POST['update']))
         $py3=$_POST['py3'];
         $langu=ucfirst($_POST['langu']);
         $obj=ucfirst($_POST['obj']);
-        $sql=mysql_query("select * from resume where reg_id='$reg_id'");
-	    $count=mysql_num_rows($sql);
+        $sql=mysql_query("select * from resume where u_id='$u_id'");
+	      $count=mysql_num_rows($sql);
 	    if($count==1)
         {
-        mysql_query("update resume set address='$address',project='$project',miniproject='$miniproject',certification='$certification',sy1='$sy1',py1='$py1',Hname='$Hname',py2='$py2',sname='$sname',py3='$py3',langu='$langu',obj='$obj',publication='$publication' where reg_id='$reg_id' ");
-            mysql_error();
-        }
-    else
-    {
-        mysql_query("insert into resume set address='$address',project='$project',miniproject='$miniproject',certification='$certification',sy1='$sy1',py1='$py1',Hname='$Hname',py2='$py2',sname='$sname',py3='$py3',langu=$langu,obj='$obj',publication='$publication' reg_id='$reg_id'");
+        mysql_query("update resume set address='$address',project='$project',miniproject='$miniproject',certification='$certification',sy1='$sy1',py1='$py1',Hname='$Hname',py2='$py2',sname='$sname',py3='$py3',langu='$langu',obj='$obj',publication='$publication' where u_id='$u_id' ");
         mysql_error();
-    }
-    header('location:selector.php');
-
+        }
+      else
+        {
+        mysql_query("insert into resume set address='$address',project='$project',miniproject='$miniproject',certification='$certification',sy1='$sy1',py1='$py1',Hname='$Hname',py2='$py2',sname='$sname',py3='$py3',langu=$langu,obj='$obj',publication='$publication' u_id='$u_id'");
+        mysql_error();
+        }
+    //header('location:selector.php');
 }
 ?>
 
@@ -129,7 +128,7 @@ if(isset($_POST['update']))
                      <div class="form-group">
                   <label for="inputEmail3" class="col-sm-4 control-label">Passing year</label>
                   <div class="col-sm-8">
-                      <input type="text" class="form-control" name="py3" value="<?php echo $py31 ?>" required>
+                      <input type="number" class="form-control" name="py3" value="<?php echo $py31 ?>" required>
                   </div>
                  </div>
 
@@ -142,12 +141,12 @@ if(isset($_POST['update']))
                  <div class="form-group">
                   <label for="inputEmail3" class="col-sm-4 control-label">Passing year</label>
                   <div class="col-sm-8">
-                     <input type="text" class="form-control" name="py2" value="<?php echo $py21 ?>" required>
+                     <input type="number" class="form-control" name="py2" value="<?php echo $py21 ?>" required>
                   </div>
                  </div>
                     <legend>Degree</legend><label for="inputEmail3" class="col-sm-4 control-label">College Name</label>
                   <div class="col-sm-8">
-                      <input type="text" class="form-control" name="dname" value="SHAH AND ANCHOR KUTCHHI ENGINEERING COLLEGE"readonly>
+                      <input type="text" class="form-control" name="dname" value="Sabu Sibbik ENGINEERING COLLEGE"readonly>
                   </div>
                  </div>
                     <div class="form-group">
@@ -159,7 +158,7 @@ if(isset($_POST['update']))
                  <div class="form-group">
                   <label for="inputEmail3" class="col-sm-4 control-label">Passing year</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" name="py1" value="<?php echo $py11 ?>" required>
+                    <input type="number" class="form-control" name="py1" value="<?php echo $py11 ?>" required>
                   </div>
                  </div>
 
@@ -195,13 +194,13 @@ if(isset($_POST['update']))
                 <div class="form-group">
                   <label for="inputPassword3" class="col-sm-4 control-label">Technical Skills</label>
                   <div class="col-sm-8">
-                      <textarea rows='3' class="form-control" id="inputEmail3" name="langu"><?php echo $lang ?></textarea>
+                      <textarea rows='3' class="form-control" id="inputEmail3" name="langu"><?php echo $langu ?></textarea>
                   </div>
                 </div>
                     <div class="form-group">
                   <label for="inputPassword3" class="col-sm-4 control-label">Publications</label>
                   <div class="col-sm-8">
-                      <textarea rows='3' class="form-control" id="inputEmail3" name="langu"><?php echo $publication ?></textarea>
+                      <textarea rows='3' class="form-control" id="inputEmail3" name="publication"><?php echo $publication ?></textarea>
                   </div>
                 </div>
                 <div class="form-group">

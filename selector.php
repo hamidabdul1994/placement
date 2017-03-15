@@ -1,8 +1,8 @@
 <?php
 include'config.php';
 require_once'session.php';
-$reg_id=$_SESSION['login_user'];
-$sql=mysql_query("select * from user where reg_id='$reg_id'");
+$u_id=$_SESSION['login_user'];
+$sql=mysql_query("select * from user where u_id='$u_id'");
 while($x=mysql_fetch_array($sql)){
     $name=$x['uname'];
 }
@@ -45,6 +45,7 @@ while($x=mysql_fetch_array($sql)){
 
     <form action="selectordb.php" method="post">
            <select class="form-control" name="selector" placeholder="Selector" required>
+             <option value="">---Select College ---</option>
             <option value="hsc">HSC</option>
             <option value="diploma">DIPLOMA</option>
             </select>

@@ -2,8 +2,8 @@
 include'config.php';
 require_once'session.php';
 error_reporting(0);
-$reg_id=$_SESSION['login_user'];
-$sql=mysql_query("select * from student_details where reg_id='$reg_id'");
+$u_id=$_SESSION['login_user'];
+$sql=mysql_query("select * from student_details where u_id='$u_id'");
 while ($a=mysql_fetch_array($sql)) {
 	$stname=$a['stname'];
 list($fname,$lname) = explode(" ",$stname);
@@ -13,13 +13,13 @@ list($fname,$lname) = explode(" ",$stname);
 	if($branch=="comp"){$branch="Computer Engineering";}
 	$type=$a['type'];
 	if($type=="hsc"){$type="HSC";}
-	else{$type="Diploma";}	
+	else{$type="Diploma";}
 	$dob=$a['dob'];
 	$faname=ucfirst($a['faname']);
 	$moname=ucfirst($a['moname']);
 }
 
-$sql=mysql_query("select * from resume where reg_id='$reg_id'");
+$sql=mysql_query("select * from resume where u_id='$u_id'");
 while ($b=mysql_fetch_array($sql)) {
 	$project=$b['project'];
 	$miniproject=$b['miniproject'];
@@ -74,8 +74,8 @@ while ($b=mysql_fetch_array($sql)) {
   background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
   background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
   text-decoration: none;
-}	
- </style>       
+}
+ </style>
         <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
     <body style="font-family: sans-serif">
         <div class="page">
@@ -115,7 +115,7 @@ while ($b=mysql_fetch_array($sql)) {
                 <div class="section-text col-right">
                     <h3><span class="emph">Bachelor</span> in <?php echo $branch ?></h3>
                     <div class="row">
-                        <div class="col light">Shah and Anchor Kutchhi Engineering college</div>
+                        <div class="col light">Sabu Siddik College</div>
                         <div class="col-right light">2012 - 2016</div>
                     </div>
                 </div>
@@ -134,7 +134,7 @@ while ($b=mysql_fetch_array($sql)) {
                     </div>
                 </div>
             </div>
-            
+
             <div class="section row">
                 <h2 class="col">Projects</h2>
                 <div class="section-text col-right">

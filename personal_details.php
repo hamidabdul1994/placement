@@ -1,10 +1,11 @@
 <?php
 include'config.php';
 require_once'session.php';
-$reg_id=$_SESSION['login_user'];
-$sql=mysql_query("select * from user where reg_id='$reg_id'");
+$u_id=$_SESSION['login_user'];
+$sql=mysql_query("select * from user where u_id='$u_id'");
 while($x=mysql_fetch_array($sql)){
     $name=$x['uname'];
+    $smartcard_no=$x['smartcard_no'];
 }
 ?>
 
@@ -36,7 +37,7 @@ while($x=mysql_fetch_array($sql)){
     <script language="javascript" type="text/javascript">
 function checkform(form)
 {
-	
+
     if(form.st_mobile.value.length!=10)
 	{
 	alert("Enter 10 digit number!")
@@ -49,14 +50,14 @@ function checkform(form)
 	form.st_mobile.focus();
 	return false;
     }
-    
+
     if(form.division.value.length!=1)
 	{
 	alert("Enter only a digit!")
 	form.st_mobile.focus();
 	return false;
 	}
-  
+
      if(isNaN(form.reg_id.value))
     {
     alert("Enter numbers only!")
@@ -86,7 +87,7 @@ function checkform(form)
         <input type="text" class="form-control" placeholder="Student's name(firstname lastname)" name="stname" required>
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
-         
+
         <div class="form-group has-feedback">
         <input type="text" class="form-control" placeholder="Father's name(firstname lastname)" name="faname" required>
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
@@ -96,11 +97,11 @@ function checkform(form)
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
         <div class="form-group has-feedback">
-        <input type="integer" class="form-control" placeholder="Registration number" name="reg_id" required>
+        <input type="number" disabled value="<?php echo $u_id; ?>" class="form-control" placeholder="Registration number" name="u_id" required>
         <span class="glyphicon glyphicon-book form-control-feedback"></span>
       </div>
         <div class="form-group has-feedback">
-        <input type="text" class="form-control" placeholder="Smartcard Number" name="smart_card" required>
+        <input type="number" disabled value="<?php echo $smartcard_no; ?>" class="form-control" placeholder="Smartcard Number" name="smart_card" required>
         <span class="glyphicon glyphicon-book form-control-feedback"></span>
       </div>
         <div class="form-group has-feedback">
@@ -111,50 +112,51 @@ function checkform(form)
         <input type="text" class="form-control" placeholder="Address" name="Add" required>
         <span class="glyphicon glyphicon-bookmark form-control-feedback"></span>
       </div>
-       
+
         <div class="form-group has-feedback">
-        <input type="text" class="form-control" placeholder="Mobile number" name="st_mobile" required>
+        <input type="number" class="form-control" placeholder="Mobile number" name="st_mobile" required>
         <span class="glyphicon glyphicon-phone form-control-feedback"></span>
       </div>
-        
+
         <div class="form-group has-feedback">
-        <input type="text" class="form-control" placeholder="Parent's Mobile number" name="pa_mobile" required>
+        <input type="number" class="form-control" placeholder="Parent's Mobile number" name="pa_mobile" required>
         <span class="glyphicon glyphicon-phone form-control-feedback"></span>
       </div>
         <div class="form-group has-feedback">
         <input type="text" class="form-control" placeholder="Roll number" name="r_number" required>
         <span class="glyphicon glyphicon-book form-control-feedback"></span>
       </div>
-       
+
         <div class="form-group has-feedback">
             <select class="form-control" name="branch" id="branch" required>
-            <option value="">Branch</option>
+            <option value="">----Branch----</option>
             <option value="comp">Computer Engineering</option>
             <option value="it">Information Technology</option>
             <option value="elec">Electronics</option>
             <option value="extc">Electronics and Telecommunication</option>
             </select>
             </div>
-              
+
          <div class="form-group has-feedback">
             <select class="form-control" id="div" name="division">
-                    	<option value="1">1</option>
+              <option value="">----Select Division----</option>
+              <option value="1">1</option>
 					    <option value="2">2</option>
-                    </select>
+            </select>
       </div>
       <div class="form-group has-feedback">
         <input type="email" class="form-control" placeholder="Email" name="emailid" required>
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
 
-           
+
          <div class="form-group has-feedback" style="font-size: 20px;">
         Male <Input type = "Radio" name ="gender" value="male"> &nbsp; &nbsp;
         Female<Input type = "Radio" name ="gender" value="female">
-        
+
         </div>
       <div class="row">
-        
+
         <!-- /.col -->
         <div class="col-xs-12">
           <button type="submit" class="btn btn-primary btn-block btn-flat" name="submit">Submit</button>

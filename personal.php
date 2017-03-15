@@ -1,17 +1,17 @@
 <?php
 include'config.php';
 require_once'session.php';
-$reg_id=$_SESSION['login_user'];
-$sql=mysql_query("select * from user where reg_id='$reg_id'");
+$u_id=$_SESSION['login_user'];
+$sql=mysql_query("select * from user where u_id='$u_id'");
 while($x=mysql_fetch_array($sql)){
     $name=$x['uname'];
 }
-$sql=mysql_query("select * from student_details where reg_id='$reg_id'");
+$sql=mysql_query("select * from student_details where u_id='$u_id'");
 while ($b=mysql_fetch_array($sql)) {
 	$stname=$b['stname'];
     $faname=$b['faname'];
     $moname=$b['moname'];
-    $reg_id=$b['reg_id'];
+    $u_id=$b['u_id'];
     $smart_card=$b['smart_card'];
     $dob=$b['dob'];
     $st_mobile=$b['st_mobile'];

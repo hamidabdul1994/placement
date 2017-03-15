@@ -1,16 +1,16 @@
 <?php
 include'config.php';
 require_once'session.php';
-$reg_id=$_SESSION['login_user'];
-$sql=mysql_query("select * from user where reg_id='$reg_id'");
+$u_id=$_SESSION['login_user'];
+$sql=mysql_query("select * from user where u_id='$u_id'");
 while($x=mysql_fetch_array($sql)){
     $name=$x['uname'];
 }
-$sql=mysql_query("select * from student_details where reg_id='$reg_id'");
+$sql=mysql_query("select * from student_details where u_id='$u_id'");
 while ($b=mysql_fetch_array($sql)) {
 	$stname=$b['stname'];
 }
-$sql=mysql_query("select * from resume where reg_id='$reg_id'");
+$sql=mysql_query("select * from resume where u_id='$u_id'");
 while ($b=mysql_fetch_array($sql)) {
 	$project1=$b['project'];
 	$miniproject1=$b['miniproject'];
@@ -35,11 +35,11 @@ if(isset($_POST['update']))
         $publication=$_POST['publication'];
         $langu=$_POST['langu'];
         $obj=$_POST['obj'];
-        $sql=mysql_query("select * from resume where reg_id='$reg_id'");
+        $sql=mysql_query("select * from resume where u_id='$u_id'");
 	    $count=mysql_num_rows($sql);
 	    if($count==1)
         {
-        mysql_query("update resume set address='$address',project='$project',miniproject='$miniproject',certification='$certification',langu='$langu',obj='$obj',publication='$publication' where reg_id='$reg_id' ");
+        mysql_query("update resume set address='$address',project='$project',miniproject='$miniproject',certification='$certification',langu='$langu',obj='$obj',publication='$publication' where u_id='$u_id' ");
         }
 }
 
@@ -51,7 +51,7 @@ if(isset($_POST['update']))
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Sakec Placement | Personal</title>
+  <title> Placement | Personal</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.5 -->
@@ -98,14 +98,14 @@ if(isset($_POST['update']))
              <form class="form-horizontal"  >
               <div class="box-body">
               	<div class="col-md-6">
-				 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-3 control-label">School Name</label>
-                  <div class="col-sm-9">
-                   <input type="text" class="form-control" name="sname" value="<?php echo $sname1 ?>"readonly>
-                  </div>
-                 </div>
-                  <br>
-                    <br>
+				              <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-3 control-label">School Name</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" name="sname" value="<?php echo $sname1 ?>"readonly>
+                        </div>
+                      </div>
+                      <br>
+                      <br>
                 <div class="form-group">
                   <label for="inputPassword3" class="col-sm-3 control-label">Passing Year </label>
                   <div class="col-sm-9">
@@ -158,7 +158,7 @@ if(isset($_POST['update']))
 				 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-3 control-label">College Name</label>
                   <div class="col-sm-9">
-                   <input type="text" class="form-control" name="dname" value="SHAH AND ANCHOR KUTCHHI ENGINEERING COLLEGE"readonly>
+                   <input type="text" class="form-control" name="dname" value="Sabu Siddik College" readonly>
                   </div>
                  </div>
                    <div class="form-group">
@@ -219,13 +219,13 @@ if(isset($_POST['update']))
                   <textarea rows='3' class="form-control" id="inputEmail3" name="address"><?php echo $address1 ?></textarea>
                   </div>
                 </div>
-                     <div class="form-group">
+                  <div class="form-group">
                   <label for="inputPassword3" class="col-sm-3 control-label">Technical Skills</label>
                   <div class="col-sm-9">
-                   <textarea rows='3' class="form-control" id="inputEmail3" name="langu"><?php echo $lang ?></textarea>
+                  <textarea rows='3' class="form-control" id="inputEmail3" name="langu"><?php echo $lang ?></textarea>
                   </div>
                 </div>
-                     <div class="form-group">
+                  <div class="form-group">
                   <label for="inputPassword3" class="col-sm-3 control-label">Certifications if any</label>
                   <div class="col-sm-9">
                     <textarea rows='3' class="form-control" id="inputEmail3" name="certification"><?php echo $certification1 ?></textarea>
