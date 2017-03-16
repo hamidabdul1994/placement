@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
--- https://www.phpmyadmin.net/
+-- version 4.0.10deb1
+-- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Mar 13, 2017 at 04:34 PM
--- Server version: 10.1.21-MariaDB
--- PHP Version: 7.0.15
+-- Host: localhost
+-- Generation Time: Mar 16, 2017 at 12:35 PM
+-- Server version: 5.5.54-0ubuntu0.14.04.1
+-- PHP Version: 5.5.9-1ubuntu4.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `new_placement`
@@ -26,10 +26,18 @@ SET time_zone = "+00:00";
 -- Table structure for table `admin`
 --
 
-CREATE TABLE `admin` (
+CREATE TABLE IF NOT EXISTS `admin` (
   `username` varchar(25) NOT NULL,
-  `password` varchar(50) NOT NULL
+  `password` varchar(50) NOT NULL,
+  PRIMARY KEY (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`username`, `password`) VALUES
+('admin', 'admin');
 
 -- --------------------------------------------------------
 
@@ -37,14 +45,16 @@ CREATE TABLE `admin` (
 -- Table structure for table `chat`
 --
 
-CREATE TABLE `chat` (
-  `message_id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `chat` (
+  `message_id` int(11) NOT NULL AUTO_INCREMENT,
   `message` text NOT NULL,
   `cur_date` date NOT NULL,
   `cur_time` time NOT NULL,
   `u_id` int(10) NOT NULL,
-  `sent` varchar(10) NOT NULL DEFAULT 'n'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `sent` varchar(10) NOT NULL DEFAULT 'n',
+  PRIMARY KEY (`message_id`),
+  KEY `user_id` (`u_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -52,14 +62,15 @@ CREATE TABLE `chat` (
 -- Table structure for table `company`
 --
 
-CREATE TABLE `company` (
-  `c_id` int(20) NOT NULL,
+CREATE TABLE IF NOT EXISTS `company` (
+  `c_id` int(20) NOT NULL AUTO_INCREMENT,
   `cname` varchar(20) NOT NULL,
   `ccode` varchar(20) NOT NULL,
   `criteria` float NOT NULL,
   `deadline` date NOT NULL,
-  `link` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `link` varchar(20) NOT NULL,
+  PRIMARY KEY (`c_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -67,7 +78,7 @@ CREATE TABLE `company` (
 -- Table structure for table `dipmarks`
 --
 
-CREATE TABLE `dipmarks` (
+CREATE TABLE IF NOT EXISTS `dipmarks` (
   `sscmarks` int(10) NOT NULL,
   `sscoutoff` int(10) NOT NULL,
   `sscpercentage` float NOT NULL,
@@ -103,7 +114,8 @@ CREATE TABLE `dipmarks` (
   `py2` int(10) NOT NULL,
   `sy` int(10) NOT NULL,
   `py3` int(10) NOT NULL,
-  `drops` int(10) NOT NULL
+  `drops` int(10) NOT NULL,
+  PRIMARY KEY (`u_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -112,13 +124,21 @@ CREATE TABLE `dipmarks` (
 -- Table structure for table `guest`
 --
 
-CREATE TABLE `guest` (
-  `g_id` int(20) NOT NULL,
+CREATE TABLE IF NOT EXISTS `guest` (
+  `g_id` int(20) NOT NULL AUTO_INCREMENT,
   `gname` varchar(20) NOT NULL,
   `gemail` varchar(20) NOT NULL,
   `cname` varchar(20) NOT NULL,
-  `pwd` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `pwd` varchar(20) NOT NULL,
+  PRIMARY KEY (`g_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `guest`
+--
+
+INSERT INTO `guest` (`g_id`, `gname`, `gemail`, `cname`, `pwd`) VALUES
+(1, 'HAmid ', 'noorihamid1994@gmail', 'BridgeLabz', '1234');
 
 -- --------------------------------------------------------
 
@@ -126,7 +146,7 @@ CREATE TABLE `guest` (
 -- Table structure for table `hscmark`
 --
 
-CREATE TABLE `hscmark` (
+CREATE TABLE IF NOT EXISTS `hscmark` (
   `sscmarks` int(20) NOT NULL,
   `sscoutoff` int(20) NOT NULL,
   `sscpercentage` float NOT NULL,
@@ -160,7 +180,10 @@ CREATE TABLE `hscmark` (
   `py1` int(10) NOT NULL,
   `py2` int(10) NOT NULL,
   `sy` int(10) NOT NULL,
-  `py3` int(10) NOT NULL
+  `py3` int(10) NOT NULL,
+  PRIMARY KEY (`u_id`),
+  KEY `u_id` (`u_id`),
+  KEY `u_id_2` (`u_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -169,14 +192,16 @@ CREATE TABLE `hscmark` (
 -- Table structure for table `message`
 --
 
-CREATE TABLE `message` (
-  `mail_id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `message` (
+  `mail_id` int(11) NOT NULL AUTO_INCREMENT,
   `subject` varchar(300) NOT NULL,
   `message` text NOT NULL,
   `send_date` date NOT NULL,
   `send_time` time NOT NULL,
-  `c_id` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `c_id` int(10) NOT NULL,
+  PRIMARY KEY (`mail_id`),
+  KEY `c_id` (`c_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -184,13 +209,15 @@ CREATE TABLE `message` (
 -- Table structure for table `message_list`
 --
 
-CREATE TABLE `message_list` (
-  `t_id` int(10) NOT NULL,
+CREATE TABLE IF NOT EXISTS `message_list` (
+  `t_id` int(10) NOT NULL AUTO_INCREMENT,
   `mail_id` varchar(10) NOT NULL,
-  `u_id` varchar(10) NOT NULL,
+  `u_id` int(10) NOT NULL,
   `register` varchar(3) NOT NULL DEFAULT 'n',
-  `round` varchar(2) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `round` varchar(2) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`t_id`),
+  KEY `u_id` (`u_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -198,7 +225,7 @@ CREATE TABLE `message_list` (
 -- Table structure for table `resume`
 --
 
-CREATE TABLE `resume` (
+CREATE TABLE IF NOT EXISTS `resume` (
   `u_id` int(25) NOT NULL,
   `address` varchar(250) NOT NULL,
   `project` varchar(250) NOT NULL,
@@ -212,8 +239,17 @@ CREATE TABLE `resume` (
   `py3` varchar(10) NOT NULL,
   `obj` varchar(150) NOT NULL,
   `langu` varchar(100) NOT NULL,
-  `publication` varchar(150) NOT NULL
+  `publication` varchar(150) NOT NULL,
+  PRIMARY KEY (`u_id`),
+  KEY `u_id` (`u_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `resume`
+--
+
+INSERT INTO `resume` (`u_id`, `address`, `project`, `miniproject`, `certification`, `sy1`, `py1`, `Hname`, `py2`, `sname`, `py3`, `obj`, `langu`, `publication`) VALUES
+(2, 'Panvel', ' NA   ', 'NA', 'Na', '2013', '2016', 'ARKP', '2013', 'Yakub Baig School', '2009', 'Nothing', 'Java,c', 'Narayan Publication');
 
 -- --------------------------------------------------------
 
@@ -221,7 +257,7 @@ CREATE TABLE `resume` (
 -- Table structure for table `student_details`
 --
 
-CREATE TABLE `student_details` (
+CREATE TABLE IF NOT EXISTS `student_details` (
   `stname` varchar(100) DEFAULT NULL,
   `faname` varchar(100) DEFAULT NULL,
   `moname` varchar(100) DEFAULT NULL,
@@ -239,8 +275,18 @@ CREATE TABLE `student_details` (
   `passyear` int(10) NOT NULL,
   `defaulter` tinyint(1) NOT NULL DEFAULT '0',
   `placed` tinyint(1) NOT NULL DEFAULT '0',
-  `c_id` int(20) NOT NULL
+  `c_id` int(20) DEFAULT NULL,
+  PRIMARY KEY (`u_id`),
+  KEY `u_id` (`u_id`),
+  KEY `c_id` (`c_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `student_details`
+--
+
+INSERT INTO `student_details` (`stname`, `faname`, `moname`, `u_id`, `smart_card`, `dob`, `st_mobile`, `pa_mobile`, `r_number`, `division`, `branch`, `emailid`, `type`, `gender`, `passyear`, `defaulter`, `placed`, `c_id`) VALUES
+('hAMID', 'Abdul', 'Noori', 2, '123456', '1994-09-20', 2147483647, 2147483647, 1, 4, 'comp', 'noorihamid1994@gmail.com', 'diploma', 'male', 0, 0, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -248,125 +294,72 @@ CREATE TABLE `student_details` (
 -- Table structure for table `user`
 --
 
-CREATE TABLE `user` (
-  `u_id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `user` (
+  `u_id` int(11) NOT NULL AUTO_INCREMENT,
   `uname` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
-  `smartcard_no` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `smartcard_no` varchar(50) NOT NULL,
+  `valid` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`u_id`),
+  UNIQUE KEY `smartcard_no` (`smartcard_no`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
--- Indexes for dumped tables
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`u_id`, `uname`, `password`, `smartcard_no`, `valid`) VALUES
+(2, 'noorihamid', '123456', '123456', 1),
+(3, 'hamid', 'dddd', '1234', 0),
+(4, 'AMit', 'sdsd', '12345', 0),
+(5, 'AMit ', '123456', '123', 0);
+
+--
+-- Constraints for dumped tables
 --
 
 --
--- Indexes for table `admin`
---
-ALTER TABLE `admin`
-  ADD PRIMARY KEY (`username`);
-
---
--- Indexes for table `chat`
+-- Constraints for table `chat`
 --
 ALTER TABLE `chat`
-  ADD PRIMARY KEY (`message_id`),
-  ADD KEY `user_id` (`u_id`);
+  ADD CONSTRAINT `chat_ibfk_1` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Indexes for table `company`
---
-ALTER TABLE `company`
-  ADD PRIMARY KEY (`c_id`);
-
---
--- Indexes for table `dipmarks`
+-- Constraints for table `dipmarks`
 --
 ALTER TABLE `dipmarks`
-  ADD PRIMARY KEY (`u_id`);
+  ADD CONSTRAINT `dipmarks_ibfk_1` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Indexes for table `guest`
---
-ALTER TABLE `guest`
-  ADD PRIMARY KEY (`g_id`);
-
---
--- Indexes for table `hscmark`
+-- Constraints for table `hscmark`
 --
 ALTER TABLE `hscmark`
-  ADD PRIMARY KEY (`u_id`),
-  ADD KEY `u_id` (`u_id`),
-  ADD KEY `u_id_2` (`u_id`);
+  ADD CONSTRAINT `hscmark_ibfk_1` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Indexes for table `message`
+-- Constraints for table `message`
 --
 ALTER TABLE `message`
-  ADD PRIMARY KEY (`mail_id`),
-  ADD KEY `c_id` (`c_id`);
+  ADD CONSTRAINT `message_ibfk_1` FOREIGN KEY (`c_id`) REFERENCES `company` (`c_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Indexes for table `message_list`
+-- Constraints for table `message_list`
 --
 ALTER TABLE `message_list`
-  ADD PRIMARY KEY (`t_id`),
-  ADD KEY `u_id` (`u_id`);
+  ADD CONSTRAINT `message_list_ibfk_1` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Indexes for table `resume`
+-- Constraints for table `resume`
 --
 ALTER TABLE `resume`
-  ADD PRIMARY KEY (`u_id`),
-  ADD KEY `u_id` (`u_id`);
+  ADD CONSTRAINT `resume_ibfk_1` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Indexes for table `student_details`
+-- Constraints for table `student_details`
 --
 ALTER TABLE `student_details`
-  ADD PRIMARY KEY (`u_id`),
-  ADD KEY `u_id` (`u_id`),
-  ADD KEY `c_id` (`c_id`);
+  ADD CONSTRAINT `student_details_ibfk_1` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
---
--- Indexes for table `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`u_id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `chat`
---
-ALTER TABLE `chat`
-  MODIFY `message_id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `company`
---
-ALTER TABLE `company`
-  MODIFY `c_id` int(20) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `guest`
---
-ALTER TABLE `guest`
-  MODIFY `g_id` int(20) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `message`
---
-ALTER TABLE `message`
-  MODIFY `mail_id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `message_list`
---
-ALTER TABLE `message_list`
-  MODIFY `t_id` int(10) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `user`
---
-ALTER TABLE `user`
-  MODIFY `u_id` int(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
