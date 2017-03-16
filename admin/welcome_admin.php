@@ -1,8 +1,14 @@
 <?php
-include'config.php';
-require_once'session_guest.php';
-$reg_id=$_SESSION['guest_user'];
+include'../config.php';
+require_once'session_admin.php';
+$reg_id=$_SESSION['login_user'];
 $out='';
+$sql=mysql_query("select * from company");
+while ($a=mysql_fetch_array($sql)) {
+	$out.='
+	<option value="'.$a['c_id'].'">'.$a['cname'].' ('.$a['ccode'].')</option>
+	';
+}
 
 ?>
 <!DOCTYPE html>
@@ -10,7 +16,7 @@ $out='';
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Sakec Placement | Student list</title>
+  <title>Sakec Placement | Mailbox</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.5 -->
@@ -27,16 +33,18 @@ $out='';
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href=" dist/css/skins/_all-skins.min.css">
-
-  <link rel="stylesheet" href="plugins/datatables/extra/buttons.dataTables.min.css"/>
-<style>
-#out{margin-top:20px}
-#DataTables_Table_0_filter{float:right}
-</style>
+  <!-- iCheck -->
+  <link rel="stylesheet" href=" plugins/iCheck/flat/blue.css">
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
-<?php include('header_guest.php') ?>
+<?php include('header_admin.php') ?>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -49,27 +57,18 @@ $out='';
     <section class="content">
       <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">Search Students</h3>
+              <h3 class="box-title">Manage Company</h3>
             </div>
-
+            <form method="get" action="manage.php">
             <div class="box-body">
-              <div class="col-sm-6">
-              	<div class="form-group">
-              		<div class="col-sm-6 no-padding">
-              			<input type="text" class="pointer form-control" id="pointer" placeholder="Enter Pointer (start)"/>
-              		</div>
-              		<div class="col-sm-6 no-padding">
-              			<input type="text" class="pointer form-control" id="pointer1" placeholder="Enter Pointer (end)"/>
-              		</div>
-              	</div>
+              <select name="id" class="form-control">
+              	<?php echo $out ?>
+              </select>
+              <div style="margin-top:10px">
+              	<input type="submit" value="Get Info" class="btn btn-success pull-right "   />
               </div>
-              <div class="col-sm-6">
-              	<div>
-              	<button class="btn btn-success " id="search"><i class="ion-android-search"></i> Get Info</button>
-              </div>
-              </div>
-              <div id="out" class="col-sm-12"></div>
             </div>
+            </form>
             <!-- /.box-body -->
           </div>
     </section>
@@ -77,7 +76,7 @@ $out='';
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <?php
+		<?php
 		include 'footer.php';
 		 ?>
   </footer>
@@ -99,38 +98,10 @@ $out='';
 <script src=" plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src=" dist/js/app.min.js"></script>
+<!-- iCheck -->
+<script src=" plugins/iCheck/icheck.min.js"></script>
 
-<script src="plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="plugins/datatables/dataTables.bootstrap.min.js"></script>
-<script src="plugins/datatables/extra/buttons.flash.min.js"></script>
-<script src="plugins/datatables/extra/buttons.html5.min.js"></script>
-<script src="plugins/datatables/extra/buttons.print.min.js"></script>
-<script src="plugins/datatables/extra/dataTables.buttons.min.js"></script>
-<script src="plugins/datatables/extra/jszip.min.js"></script>
-<script src="plugins/datatables/extra/pdfmake.min.js"></script>
-<script src="plugins/datatables/extra/vfs_fonts.js"></script>
-<script>
-$(document).ready(function(){
-	$("#search").click(function(){
-		var pointer=$("#pointer").val();
-		var pointerend=$("#pointer1").val();
-		$.ajax({
-			type:"GET",
-			url:"getinfo.php?start="+pointer+"&end="+pointerend,
-			cache:false,
-			success:function(html){
-				$("#out").empty();
-				$("#out").append(html);
-				$(".table").DataTable({
-						dom: 'Bfrtip',
-				        buttons: [
-				            'copy', 'csv', 'excel', 'pdf', 'print'
-				        ]
-					});
-			}
-		})
-	})
-})
-</script>
+<!-- AdminLTE for demo purposes -->
+<script src=" dist/js/demo.js"></script>
 </body>
 </html>

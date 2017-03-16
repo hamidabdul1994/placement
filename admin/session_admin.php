@@ -1,5 +1,5 @@
 <?php
-include'config.php';
+include'../config.php';
 session_start();
 $user_check=$_SESSION['admin_user'];
 $ses_sql=mysql_query("select * from admin where reg_id='$user_check'");
