@@ -5,7 +5,7 @@ $sql=mysql_query("select * from student_details where u_id='$u_id'");
 while($x=mysql_fetch_array($sql)){
     $gender=$x['gender'];
     $type=$x['type'];
-    if($gender=="male"){$gender1='male.png';}
+    if($gender=="male"){$gender1='../male.png';}
     else{$gender1='female.png';}
     if($type=="hsc"){$type1='academic_hsc.php';}
     else{$type1='academic_diploma.php';}
@@ -37,13 +37,13 @@ while($x=mysql_fetch_array($sql)){
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="profile.png" class="user-image" alt="User Image">
+              <img src="../profile.png" class="user-image" alt="User Image">
 
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="admin.png" class="img-circle" alt="User Image">
+                <img src="../admin.png" class="img-circle" alt="User Image">
 
                 <p>
                    -Webmaster
@@ -74,7 +74,7 @@ while($x=mysql_fetch_array($sql)){
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="admin.png" class="img-circle" alt="User Image">
+          <img src="../admin.png" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p></p>

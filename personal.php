@@ -28,7 +28,7 @@ if(isset($_POST['update']))
 	$stname=$_POST['stname'];
         $faname=$_POST['faname'];
         $moname=$_POST['moname'];
-        $reg_id=$_POST['reg_id'];
+        $u_id=$_POST['u_id'];
         $smart_card=$_POST['smart_card'];
         $dob=$_POST['dob'];
         $st_mobile=$_POST['st_mobile'];
@@ -38,11 +38,11 @@ if(isset($_POST['update']))
         $branch=$_POST['branch'];
         $emailid=$_POST['emailid'];
         $gender=$_POST['gender'];
-        $sql=mysql_query("select * from student_details where reg_id='$reg_id'");
+        $sql=mysql_query("select * from student_details where u_id='$u_id'");
 	    $count=mysql_num_rows($sql);
 	    if($count==1)
         {
-        mysql_query("update student_details set stname='$stname',faname='$faname',moname='$moname',smart_card='$smart_card',dob='$dob',st_mobile='$st_mobile',pa_mobile='$pa_mobile',r_number='$r_number',division='$division',branch='$branch',emailid='$emailid',gender='$gender' where reg_id='$reg_id' ");
+        mysql_query("update student_details set stname='$stname',faname='$faname',moname='$moname',smart_card='$smart_card',dob='$dob',st_mobile='$st_mobile',pa_mobile='$pa_mobile',r_number='$r_number',division='$division',branch='$branch',emailid='$emailid',gender='$gender' where u_id='$u_id' ");
         }
 
 }
@@ -147,7 +147,7 @@ if(isset($_POST['update']))
                 	<div class="form-group">
                   <label for="inputEmail3" class="col-sm-3 control-label">Registration id</label>
                   <div class="col-sm-9">
-                    <input type="text" class="form-control" id="inputEmail3" placeholder="Registration id" name="reg_id" value="<?php echo $reg_id ?>" readonly>
+                    <input type="text" class="form-control" id="inputEmail3" placeholder="Registration id" name="u_id" value="<?php echo $u_id ?>" readonly>
                   </div>
                 </div>
                 <div class="form-group">

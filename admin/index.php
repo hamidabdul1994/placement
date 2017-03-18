@@ -39,7 +39,7 @@ include'login.php';
   <div class="login-box-body">
     <p class="login-box-msg">Sign in </p>
 
-    <form action="#" method="post">
+    <form action="" method="post">
       <div class="form-group has-feedback">
         <input type="text" class="form-control" placeholder="Username" name="username">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>

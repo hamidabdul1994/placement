@@ -13,7 +13,7 @@ while($x=mysql_fetch_array($sql)){
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Sakec Placement| Academic details</title>
+  <title>MHSSCE Placement| Academic details</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.5 -->
@@ -63,7 +63,7 @@ while($x=mysql_fetch_array($sql)){
    <div class="box-header with-border">
               <h1 class="box-title">SSC</h1>
             </div>
-    
+
               <div class="box-body">
               	<div class="col-md-6">
 				 <div class="form-group">
@@ -72,14 +72,14 @@ while($x=mysql_fetch_array($sql)){
                     <input type="text" class="form-control" placeholder="marks obtained" name="sscmarks" required>
                      </div>
                  </div>
-                </div>          
+                </div>
                 <div class="col-md-6">
                     <div class="form-group">
                     <label for="inputPassword3" class="col-sm-3 control-label">Out off marks</label>
                         <div class="col-sm-9">
                         <input type="text" class="form-control"  placeholder="Out off" name="sscoutoff" required>
                         </div>
-                    </div>    
+                    </div>
                 </div>
                    <div class="col-md-6">
                     <div class="form-group">
@@ -87,9 +87,9 @@ while($x=mysql_fetch_array($sql)){
                         <div class="col-sm-8">
                         <input type="text" class="form-control" name="py1" required>
                         </div>
-                    </div>    
+                    </div>
                 </div>
-                
+
            </div>
       <div class="box-header with-border">
               <h1 class="box-title">DIPLOMA</h1>
@@ -102,14 +102,14 @@ while($x=mysql_fetch_array($sql)){
                     <input type="text" class="form-control" placeholder="marks obtained" name="year1marks" required>
                      </div>
                  </div>
-                </div>          
+                </div>
                 <div class="col-md-6">
                     <div class="form-group">
                     <label for="inputPassword3" class="col-sm-3 control-label"></label>
                         <div class="col-sm-9">
                         <input type="text" class="form-control"  placeholder="Out off" name="year1outoff" required>
                         </div>
-                    </div>    
+                    </div>
                 </div>
  <div class="col-md-6">
 				 <div class="form-group">
@@ -118,14 +118,14 @@ while($x=mysql_fetch_array($sql)){
                     <input type="text" class="form-control" placeholder="marks obtained" name="year2marks" required>
                      </div>
                  </div>
-                </div>          
+                </div>
                 <div class="col-md-6">
                     <div class="form-group">
                     <label for="inputPassword3" class="col-sm-3 control-label"></label>
                         <div class="col-sm-9">
                         <input type="text" class="form-control"  placeholder="Out off" name="year2outoff" required>
                         </div>
-                    </div>    
+                    </div>
                 </div>
  <div class="col-md-6">
 				 <div class="form-group">
@@ -134,14 +134,14 @@ while($x=mysql_fetch_array($sql)){
                     <input type="text" class="form-control" placeholder="marks obtained" name="year3marks" required>
                      </div>
                  </div>
-                </div>          
+                </div>
                 <div class="col-md-6">
                     <div class="form-group">
                     <label for="inputPassword3" class="col-sm-3 control-label"></label>
                         <div class="col-sm-9">
                         <input type="text" class="form-control"  placeholder="Out off" name="year3outoff" required>
                         </div>
-                    </div>    
+                    </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
@@ -149,16 +149,16 @@ while($x=mysql_fetch_array($sql)){
                         <div class="col-sm-8">
                         <input type="text" class="form-control" name="py2" required >
                         </div>
-                    </div>    
+                    </div>
                 </div>
-                 
+
               </div>
-            
+
 <div class="box-header with-border">
               <h1 class="box-title">DEGREE</h1>
             </div>
               <div class="box-body">
-            
+
 <div class="col-md-6">
 				 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-4 control-label">SEM3</label>
@@ -166,14 +166,14 @@ while($x=mysql_fetch_array($sql)){
                     <input type="text" class="form-control" placeholder="C*G" name="sem3marks" required>
                      </div>
                  </div>
-                </div>          
+                </div>
                 <div class="col-md-6">
                     <div class="form-group">
                     <label for="inputPassword3" class="col-sm-3 control-label"></label>
                         <div class="col-sm-9">
                         <input type="text" class="form-control"  placeholder="C" name="sem3outoff" required>
                         </div>
-                    </div>    
+                    </div>
                 </div>
 <div class="col-md-6">
 				 <div class="form-group">
@@ -182,14 +182,14 @@ while($x=mysql_fetch_array($sql)){
                     <input type="text" class="form-control" placeholder="C*G" name="sem4marks" required>
                      </div>
                  </div>
-                </div>          
+                </div>
                 <div class="col-md-6">
                     <div class="form-group">
                     <label for="inputPassword3" class="col-sm-3 control-label"></label>
                         <div class="col-sm-9">
                         <input type="text" class="form-control"  placeholder="C" name="sem4outoff" required >
                         </div>
-                    </div>    
+                    </div>
                 </div>
 <div class="col-md-6">
 				 <div class="form-group">
@@ -198,14 +198,14 @@ while($x=mysql_fetch_array($sql)){
                     <input type="text" class="form-control" placeholder="C*G" name="sem5marks" >
                      </div>
                  </div>
-                </div>          
+                </div>
                 <div class="col-md-6">
                     <div class="form-group">
                     <label for="inputPassword3" class="col-sm-3 control-label"></label>
                         <div class="col-sm-9">
                         <input type="text" class="form-control"  placeholder="C" name="sem5outoff" >
                         </div>
-                    </div>    
+                    </div>
                 </div>
 <div class="col-md-6">
 				 <div class="form-group">
@@ -214,14 +214,14 @@ while($x=mysql_fetch_array($sql)){
                     <input type="text" class="form-control" placeholder="C*G" name="sem6marks" >
                      </div>
                  </div>
-                </div>          
+                </div>
                 <div class="col-md-6">
                     <div class="form-group">
                     <label for="inputPassword3" class="col-sm-3 control-label"></label>
                         <div class="col-sm-9">
                         <input type="text" class="form-control"  placeholder="C" name="sem6outoff" >
                         </div>
-                    </div>    
+                    </div>
                 </div>
 <div class="col-md-6">
 				 <div class="form-group">
@@ -230,14 +230,14 @@ while($x=mysql_fetch_array($sql)){
                     <input type="text" class="form-control" placeholder="C*G" name="sem7marks" >
                      </div>
                  </div>
-                </div>          
+                </div>
                 <div class="col-md-6">
                     <div class="form-group">
                     <label for="inputPassword3" class="col-sm-3 control-label"></label>
                         <div class="col-sm-9">
                         <input type="text" class="form-control"  placeholder="C" name="sem7outoff" >
                         </div>
-                    </div>    
+                    </div>
                 </div>
 <div class="col-md-6">
 				 <div class="form-group">
@@ -246,23 +246,23 @@ while($x=mysql_fetch_array($sql)){
                     <input type="text" class="form-control" placeholder="C*G" name="sem8marks" >
                      </div>
                  </div>
-                </div>          
+                </div>
                 <div class="col-md-6">
                     <div class="form-group">
                     <label for="inputPassword3" class="col-sm-3 control-label"></label>
                         <div class="col-sm-9">
                         <input type="text" class="form-control"  placeholder="C" name="sem8outoff" >
                         </div>
-                    </div>    
+                    </div>
                 </div>
-                  
+
                 <div class="col-md-6">
                     <div class="form-group">
                    <br> <label for="inputPassword3" class="col-sm-4 control-label">Starting Year</label>
                         <div class="col-sm-8">
                         <input type="text" class="form-control" name="sy" >
                         </div>
-                    </div>    
+                    </div>
                 </div>
                    <div class="col-md-6">
                     <div class="form-group">
@@ -270,7 +270,7 @@ while($x=mysql_fetch_array($sql)){
                         <div class="col-sm-9">
                         <input type="text" class="form-control" name="py3" >
                         </div>
-                    </div>    
+                    </div>
                 </div>
           </div>
             <div class="box-body">
@@ -290,9 +290,9 @@ while($x=mysql_fetch_array($sql)){
                               <input type="text" class="form-control" name="deadkt" required><div class="col-sm-5 no-padding tools" ><a href="#" data-toggle="tooltip" title="Subjects you have cleared in past after getting kt. Each subject 1 only. ">?</a></div>
                           </div>
                         </div>
-                </div> 
+                </div>
     </div><div class="box-body">
-                  
+
                   <div class="col-md-6">
                       <div class="form-group">
                   <label for="inputEmail3" class="col-sm-4 control-label">No of Attempts</label>
@@ -300,19 +300,19 @@ while($x=mysql_fetch_array($sql)){
                     <input type="text" class="form-control" name="attempts" required> <div class="col-sm-5 no-padding tools" ><a href="#" data-toggle="tooltip" title="Attempts you made to clear a subject. Each subject can have more than one attempts.">?</a></div>
                      </div>
                  </div>
-                </div> 
-                
-                
-                
+                </div>
+
+
+
                 <div>
           <button type="submit" class="btn btn-primary btn-block btn-flat" name="submit">Submit</button>
         </div>
-        
 
-            
 
-      
-      
+
+
+
+
     </form>
 
 
@@ -358,7 +358,7 @@ $(document).ready(function(){
 		}
 	});
 })
-</script>    
+</script>
 
 </body>
 </html>

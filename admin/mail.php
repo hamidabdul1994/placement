@@ -1,5 +1,5 @@
 <?php
-include'config.php';
+include'../config.php';
 require_once'session_admin.php';
 $out='';
 $to='';
@@ -22,15 +22,15 @@ if($stname!=''|| $stname!=null){
 		$company_id=$s['company_id'];
 		$c=mysql_fetch_array(mysql_query("select * from company where c_id='$company_id'"));
 		$placed=$c['cname'];
-		$reg_id=$s['reg_id'];
-		$to.=''.$reg_id.';';
+		$u_id=$s['u_id'];
+		$to.=''.$u_id.';';
 		$type=$s['type'];
-		if($type=='hsc'){$x=mysql_fetch_array(mysql_query("select * from hscmark where reg_id='$reg_id'"));}
-		else{$x=mysql_fetch_array(mysql_query("select * from dipmarks where reg_id='$reg_id'"));}
+		if($type=='hsc'){$x=mysql_fetch_array(mysql_query("select * from hscmark where u_id='$u_id'"));}
+		else{$x=mysql_fetch_array(mysql_query("select * from dipmarks where u_id='$u_id'"));}
 		$out.='
 		<tr>
             <td>'.$i.'</td>
-            <td>'.$reg_id.'</td>
+            <td>'.$u_id.'</td>
             <td>'.$s['stname'].'</td>
             <td>'.$x['degreepointer'].'</td>
             <td>'.$x['hscpercentage'].'</td>
@@ -110,26 +110,26 @@ else{
 		if($count>0){
 
 			while ($v=mysql_fetch_array($sq)) {
-				$reg_id=$v['reg_id'];
+				$u_id=$v['u_id'];
 				$type=$v['type'];
 				if($type=="hsc"){
-					$sql=mysql_query("select * from hscmark where reg_id='$reg_id' and sscpercentage>='$ssc' and hscpercentage>='$hsc' and (degreepointer BETWEEN ".$degree0." AND ".$degree1.") and drops<='$drop' and livekt<='$livekt' and deadkt<='$deadkt' and attempts<='$attempts'   ");
+					$sql=mysql_query("select * from hscmark where u_id='$u_id' and sscpercentage>='$ssc' and hscpercentage>='$hsc' and (degreepointer BETWEEN ".$degree0." AND ".$degree1.") and drops<='$drop' and livekt<='$livekt' and deadkt<='$deadkt' and attempts<='$attempts'   ");
 				}
 				if($type=="diploma"){
-					$sql=mysql_query("select * from dipmarks where reg_id='$reg_id' and sscpercentage>='$ssc' and diplomapercentage>='$diplomapercentage' and (degreepointer BETWEEN ".$sem3onward." AND ".$sem3onward1.") and drops<='$drop' and livekt<='$livekt' and deadkt<='$deadkt' and attempts<='$attempts' ");
+					$sql=mysql_query("select * from dipmarks where u_id='$u_id' and sscpercentage>='$ssc' and diplomapercentage>='$diplomapercentage' and (degreepointer BETWEEN ".$sem3onward." AND ".$sem3onward1.") and drops<='$drop' and livekt<='$livekt' and deadkt<='$deadkt' and attempts<='$attempts' ");
 				}
 				$co=mysql_num_rows($sql);
 
 				if($co==1){
 					 if($isplaced!="b"){
-					 	$sq1=mysql_query("select * from student_details where reg_id='$reg_id' and placed='$isplaced'");
+					 	$sq1=mysql_query("select * from student_details where u_id='$u_id' and placed='$isplaced'");
 					 	$c=mysql_num_rows($sq1);
 
 					 	if($c==1){
 					 		while ($s=mysql_fetch_array($sq1)) {
 
-								$reg_id=$s['reg_id'];
-								$to.=''.$reg_id.';';
+								$u_id=$s['u_id'];
+								$to.=''.$u_id.';';
 								$x='';
 								$placed='';
 								$company_id=$s['company_id'];
@@ -137,12 +137,17 @@ else{
 								$placed=$c['cname'];
 								$type=$s['type'];
 								$hscpercent='';
-								if($type=='hsc'){$x=mysql_fetch_array(mysql_query("select * from hscmark where reg_id='$reg_id'"));$hscpercent=$x['hscpercentage'];}
-								else{$x=mysql_fetch_array(mysql_query("select * from dipmarks where reg_id='$reg_id'"));$hscpercent=$x['diplomapercentage'];}
+								if($type=='hsc'){$x=mysql_fetch_array(mysql_query("select * from hscmark where u_id='$u_id'"));
+									$hscpercent=$x['hscpercentage'];
+								}
+								else{
+									$x=mysql_fetch_array(mysql_query("select * from dipmarks where u_id='$u_id'"));
+									$hscpercent=$x['diplomapercentage'];
+								}
 								$out.='
 								<tr>
 									<td>'.$i.'</td>
-						            <td>'.$reg_id.'</td>
+						            <td>'.$u_id.'</td>
 						            <td>'.$s['stname'].'</td>
 						            <td>'.$x['degreepointer'].'</td>
 						            <td>'.$hscpercent.'</td>
@@ -160,12 +165,12 @@ else{
 
 					 }
 					 else{
-					 	$sq1=mysql_query("select * from student_details where reg_id='$reg_id'");
+					 	$sq1=mysql_query("select * from student_details where u_id='$u_id'");
 							$c=mysql_num_rows($sq1);
 						 	if($c==1){
 						 		while ($s=mysql_fetch_array($sq1)) {
-									$reg_id=$s['reg_id'];
-									$to.=''.$reg_id.';';
+									$u_id=$s['u_id'];
+									$to.=''.$u_id.';';
 									$x='';
                                     $placed='';
                                     $company_id=$s['company_id'];
@@ -174,12 +179,12 @@ else{
 
 									$type=$s['type'];
 									$hscpercent='';
-									if($type=='hsc'){$x=mysql_fetch_array(mysql_query("select * from hscmark where reg_id='$reg_id'"));$hscpercent=$x['hscpercentage'];}
-									else{$x=mysql_fetch_array(mysql_query("select * from dipmarks where reg_id='$reg_id'"));$hscpercent=$x['diplomapercentage'];}
+									if($type=='hsc'){$x=mysql_fetch_array(mysql_query("select * from hscmark where u_id='$u_id'"));$hscpercent=$x['hscpercentage'];}
+									else{$x=mysql_fetch_array(mysql_query("select * from dipmarks where u_id='$u_id'"));$hscpercent=$x['diplomapercentage'];}
 									$out.='
 									<tr>
 									<td>'.$i.'</td>
-							            <td>'.$reg_id.'</td>
+							            <td>'.$u_id.'</td>
 							            <td>'.$s['stname'].'</td>
 							            <td>'.$x['degreepointer'].'</td>
 						           		 <td>'.$hscpercent.'</td>
@@ -211,22 +216,22 @@ else{
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.5 -->
-  <link rel="stylesheet" href=" bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="./css/font-awesome.css">
+  <link rel="stylesheet" href="../css/font-awesome.css">
   <!-- Ionicons -->
-  <link rel="stylesheet" href="./css/ionicons.min.css">
+  <link rel="stylesheet" href="../css/ionicons.min.css">
   <!-- fullCalendar 2.2.5-->
-  <link rel="stylesheet" href=" plugins/fullcalendar/fullcalendar.min.css">
-  <link rel="stylesheet" href=" plugins/fullcalendar/fullcalendar.print.css" media="print">
+  <link rel="stylesheet" href="../plugins/fullcalendar/fullcalendar.min.css">
+  <link rel="stylesheet" href="../plugins/fullcalendar/fullcalendar.print.css" media="print">
   <!-- DataTables -->
-  <link rel="stylesheet" href="plugins/datatables/dataTables.bootstrap.css">
+  <link rel="stylesheet" href="../plugins/datatables/dataTables.bootstrap.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href=" dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href=" dist/css/skins/_all-skins.min.css">
-  <link rel="stylesheet" href="plugins/datatables/extra/buttons.dataTables.min.css"/>
+  <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="../plugins/datatables/extra/buttons.dataTables.min.css"/>
 
 <style>
 .box-header:hover{cursor: pointer}
@@ -270,7 +275,7 @@ else{
                 <thead>
                 <tr>
                 	<th>Sr no.</th>
-                  	<th>reg_id</th>
+                  	<th>u_id</th>
                 	<th>name</th>
                 	<th>degree pointer</th>
                 	<th>hsc/diploma</th>
@@ -288,7 +293,7 @@ else{
                 <tfoot>
                 <tr>
                     <th>SR no.</th>
-                  <th>reg_id</th>
+                  <th>u_id</th>
                 	<th>name</th>
                 	<th>degree pointer</th>
                 	<th>hsc/diploma</th>
@@ -339,7 +344,7 @@ else{
   <footer class="main-footer">
 
 <?php
-include 'footer.php';
+include '../footer.php';
  ?>
   </footer>
 
@@ -351,25 +356,25 @@ include 'footer.php';
 <!-- ./wrapper -->
 
 <!-- jQuery 2.1.4 -->
-<script src=" plugins/jQuery/jQuery-2.1.4.min.js"></script>
+<script src="../plugins/jQuery/jQuery-2.1.4.min.js"></script>
 <!-- Bootstrap 3.3.5 -->
-<script src=" bootstrap/js/bootstrap.min.js"></script>
+<script src="../bootstrap/js/bootstrap.min.js"></script>
 
-<script src="plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="plugins/datatables/dataTables.bootstrap.min.js"></script>
+<script src="../plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="../plugins/datatables/dataTables.bootstrap.min.js"></script>
 <!-- Slimscroll -->
-<script src=" plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
-<script src=" plugins/fastclick/fastclick.js"></script>
+<script src="../plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
-<script src=" dist/js/app.min.js"></script>
-<script src="plugins/datatables/extra/buttons.flash.min.js"></script>
-<script src="plugins/datatables/extra/buttons.html5.min.js"></script>
-<script src="plugins/datatables/extra/buttons.print.min.js"></script>
-<script src="plugins/datatables/extra/dataTables.buttons.min.js"></script>
-<script src="plugins/datatables/extra/jszip.min.js"></script>
-<script src="plugins/datatables/extra/pdfmake.min.js"></script>
-<script src="plugins/datatables/extra/vfs_fonts.js"></script>
+<script src="../dist/js/app.min.js"></script>
+<script src="../plugins/datatables/extra/buttons.flash.min.js"></script>
+<script src="../plugins/datatables/extra/buttons.html5.min.js"></script>
+<script src="../plugins/datatables/extra/buttons.print.min.js"></script>
+<script src="../plugins/datatables/extra/dataTables.buttons.min.js"></script>
+<script src="../plugins/datatables/extra/jszip.min.js"></script>
+<script src="../plugins/datatables/extra/pdfmake.min.js"></script>
+<script src="../plugins/datatables/extra/vfs_fonts.js"></script>
 
 <!-- Page Script -->
 <script>
@@ -399,6 +404,6 @@ $(document).ready(function(){
 })
 </script>
 <!-- AdminLTE for demo purposes -->
-<script src=" dist/js/demo.js"></script>
+<script src="../ dist/js/demo.js"></script>
 </body>
 </html>

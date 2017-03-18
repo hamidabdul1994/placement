@@ -1,7 +1,7 @@
 <?php
 include'../config.php';
-require_once'session_admin.php';
-$reg_id=$_SESSION['login_user'];
+require_once 'session_admin.php';
+$username=$_SESSION['admin_user'];
 $out='';
 $sql=mysql_query("select * from company");
 while ($a=mysql_fetch_array($sql)) {
@@ -9,7 +9,6 @@ while ($a=mysql_fetch_array($sql)) {
 	<option value="'.$a['c_id'].'">'.$a['cname'].' ('.$a['ccode'].')</option>
 	';
 }
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -20,21 +19,21 @@ while ($a=mysql_fetch_array($sql)) {
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.5 -->
-  <link rel="stylesheet" href=" bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="./css/font-awesome.css">
+  <link rel="stylesheet" href="../css/font-awesome.css">
   <!-- Ionicons -->
-  <link rel="stylesheet" href="./css/ionicons.min.css">
+  <link rel="stylesheet" href="../css/ionicons.min.css">
   <!-- fullCalendar 2.2.5-->
-  <link rel="stylesheet" href=" plugins/fullcalendar/fullcalendar.min.css">
-  <link rel="stylesheet" href=" plugins/fullcalendar/fullcalendar.print.css" media="print">
+  <link rel="stylesheet" href="../plugins/fullcalendar/fullcalendar.min.css">
+  <link rel="stylesheet" href="../plugins/fullcalendar/fullcalendar.print.css" media="print">
   <!-- Theme style -->
-  <link rel="stylesheet" href=" dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href=" dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
   <!-- iCheck -->
-  <link rel="stylesheet" href=" plugins/iCheck/flat/blue.css">
+  <link rel="stylesheet" href="../plugins/iCheck/flat/blue.css">
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -77,7 +76,7 @@ while ($a=mysql_fetch_array($sql)) {
   <!-- /.content-wrapper -->
   <footer class="main-footer">
 		<?php
-		include 'footer.php';
+		include '../footer.php';
 		 ?>
   </footer>
 
@@ -89,19 +88,19 @@ while ($a=mysql_fetch_array($sql)) {
 <!-- ./wrapper -->
 
 <!-- jQuery 2.1.4 -->
-<script src=" plugins/jQuery/jQuery-2.1.4.min.js"></script>
+<script src="../plugins/jQuery/jQuery-2.1.4.min.js"></script>
 <!-- Bootstrap 3.3.5 -->
-<script src=" bootstrap/js/bootstrap.min.js"></script>
+<script src="../bootstrap/js/bootstrap.min.js"></script>
 <!-- Slimscroll -->
-<script src=" plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
-<script src=" plugins/fastclick/fastclick.js"></script>
+<script src="../plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
-<script src=" dist/js/app.min.js"></script>
+<script src="../dist/js/app.min.js"></script>
 <!-- iCheck -->
-<script src=" plugins/iCheck/icheck.min.js"></script>
+<script src="../plugins/iCheck/icheck.min.js"></script>
 
 <!-- AdminLTE for demo purposes -->
-<script src=" dist/js/demo.js"></script>
+<script src="../dist/js/demo.js"></script>
 </body>
 </html>

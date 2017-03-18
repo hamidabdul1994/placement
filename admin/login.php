@@ -4,8 +4,10 @@ $error='';
 echo "entry";
 if(isset($_POST['login']))
    {
+     echo "string";
       $username=mysql_real_escape_string($_POST['username']);
       $password=mysql_real_escape_string($_POST['password']);
+      echo "user=$username and password=$password";
       $sql1=mysql_query("select * from admin where username='$username' and password='$password' ") or die(mysql_error());
       $count1=mysql_num_rows($sql1);
       $error='<i class="ion-alert"></i> Admin::'.$count1;

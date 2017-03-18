@@ -5,11 +5,11 @@ require_once'session.php';
 
 if(isset($_POST['submit']))
    {
-$reg_id=$_SESSION['login_user'];       
-    
+$u_id=$_SESSION['login_user'];
+
         $sscmarks=$_POST['sscmarks'];
         $sscoutoff=$_POST['sscoutoff'];
-        $sscpercentage=(($sscmarks)/($sscoutoff)*100); 
+        $sscpercentage=(($sscmarks)/($sscoutoff)*100);
     $sscpercentage=sprintf('%0.2f', $sscpercentage);
         $year1marks=$_POST['year1marks'];
         $year1outoff=$_POST['year1outoff'];
@@ -44,14 +44,14 @@ $reg_id=$_SESSION['login_user'];
         $livekt=$_POST['livekt'];
         $deadkt=$_POST['deadkt'];
         $attempts=$_POST['attempts'];
-        $drops=(($py3-$sy)-3);   
-        $sql=mysql_query("select * from dipmarks where reg_id='$reg_id'");
+        $drops=(($py3-$sy)-3);
+        $sql=mysql_query("select * from dipmarks where u_id='$u_id'");
 	    $count=mysql_num_rows($sql);
 	    if($count==0)
         {
-        mysql_query("insert into dipmarks set sscmarks='$sscmarks',sscoutoff='$sscoutoff',sscpercentage='$sscpercentage',year1marks='$year1marks',year1outoff='$year1outoff',year2marks='$year2marks',year2outoff='$year2outoff',year3marks='$year3marks',year3outoff='$year3outoff',totaldmarks='$totaldmarks',totaldoutoff='$totaldoutoff',diplomapercentage='$diplomapercentage',sem3marks='$sem3marks',sem3outoff='$sem3outoff',sem4marks='$sem4marks',sem4outoff='$sem4outoff',sem5marks='$sem5marks',sem5outoff='$sem5outoff',sem6marks='$sem6marks',sem6outoff='$sem6outoff',sem7marks='$sem7marks',sem7outoff='$sem7outoff',sem8marks='$sem8marks',sem8outoff='$sem8outoff',py1='$py1',py2='$py2',py3='$py3',sy='$sy',totalmarks='$totalmarks',totaloutoff='$totaloutoff',degreepointer='$degreepointer',livekt='$livekt',deadkt='$deadkt',attempts='$attempts',reg_id='$reg_id'");
-       
-             
+        mysql_query("insert into dipmarks set sscmarks='$sscmarks',sscoutoff='$sscoutoff',sscpercentage='$sscpercentage',year1marks='$year1marks',year1outoff='$year1outoff',year2marks='$year2marks',year2outoff='$year2outoff',year3marks='$year3marks',year3outoff='$year3outoff',totaldmarks='$totaldmarks',totaldoutoff='$totaldoutoff',diplomapercentage='$diplomapercentage',sem3marks='$sem3marks',sem3outoff='$sem3outoff',sem4marks='$sem4marks',sem4outoff='$sem4outoff',sem5marks='$sem5marks',sem5outoff='$sem5outoff',sem6marks='$sem6marks',sem6outoff='$sem6outoff',sem7marks='$sem7marks',sem7outoff='$sem7outoff',sem8marks='$sem8marks',sem8outoff='$sem8outoff',py1='$py1',py2='$py2',py3='$py3',sy='$sy',totalmarks='$totalmarks',totaloutoff='$totaloutoff',degreepointer='$degreepointer',livekt='$livekt',deadkt='$deadkt',attempts='$attempts',u_id='$u_id'");
+
+
        }
    header('location:welcome.php');
       }
