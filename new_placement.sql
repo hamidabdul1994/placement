@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 16, 2017 at 12:35 PM
+-- Generation Time: Mar 22, 2017 at 05:47 PM
 -- Server version: 5.5.54-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.21
 
@@ -54,7 +54,15 @@ CREATE TABLE IF NOT EXISTS `chat` (
   `sent` varchar(10) NOT NULL DEFAULT 'n',
   PRIMARY KEY (`message_id`),
   KEY `user_id` (`u_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `chat`
+--
+
+INSERT INTO `chat` (`message_id`, `message`, `cur_date`, `cur_time`, `u_id`, `sent`) VALUES
+(1, 'hi', '2017-03-22', '17:03:24', 2, 'n'),
+(2, 'heelo', '2017-03-22', '17:06:53', 2, 'y');
 
 -- --------------------------------------------------------
 
@@ -70,7 +78,15 @@ CREATE TABLE IF NOT EXISTS `company` (
   `deadline` date NOT NULL,
   `link` varchar(20) NOT NULL,
   PRIMARY KEY (`c_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `company`
+--
+
+INSERT INTO `company` (`c_id`, `cname`, `ccode`, `criteria`, `deadline`, `link`) VALUES
+(1, 'TCS', 'T5000', 3, '2017-03-31', ''),
+(2, 'BridgeLabz', '123', 3, '2017-03-31', '');
 
 -- --------------------------------------------------------
 
@@ -117,6 +133,13 @@ CREATE TABLE IF NOT EXISTS `dipmarks` (
   `drops` int(10) NOT NULL,
   PRIMARY KEY (`u_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `dipmarks`
+--
+
+INSERT INTO `dipmarks` (`sscmarks`, `sscoutoff`, `sscpercentage`, `u_id`, `year1marks`, `year1outoff`, `year2marks`, `year2outoff`, `year3marks`, `year3outoff`, `totaldmarks`, `totaldoutoff`, `diplomapercentage`, `sem3marks`, `sem3outoff`, `sem4marks`, `sem4outoff`, `sem5marks`, `sem5outoff`, `sem6marks`, `sem6outoff`, `sem7marks`, `sem7outoff`, `sem8marks`, `sem8outoff`, `totalmarks`, `totaloutoff`, `degreepointer`, `livekt`, `deadkt`, `attempts`, `py1`, `py2`, `sy`, `py3`, `drops`) VALUES
+(464, 650, 71.38, 2, 654, 800, 750, 850, 950, 120, 2354, 1770, 132.99, 7, 25, 7, 24, 7, 26, 7, 23, 7, 26, 8, 25, 43, 149, 0.29, 0, 0, 0, 2009, 2013, 2013, 2016, 0);
 
 -- --------------------------------------------------------
 
@@ -186,6 +209,13 @@ CREATE TABLE IF NOT EXISTS `hscmark` (
   KEY `u_id_2` (`u_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `hscmark`
+--
+
+INSERT INTO `hscmark` (`sscmarks`, `sscoutoff`, `sscpercentage`, `u_id`, `hscmarks`, `hscoutoff`, `hscpercentage`, `sem1marks`, `sem1outoff`, `sem2marks`, `sem2outoff`, `sem3marks`, `sem3outoff`, `sem4marks`, `sem4outoff`, `sem5marks`, `sem5outoff`, `sem6marks`, `sem6outoff`, `sem7marks`, `sem7outoff`, `sem8marks`, `sem8outoff`, `totalmarks`, `totaloutoff`, `degreepointer`, `livekt`, `deadkt`, `attempts`, `drops`, `py1`, `py2`, `sy`, `py3`) VALUES
+(650, 700, 92.86, 6, 650, 700, 92.86, 7, 25, 7, 25, 7, 25, 7, 25, 7, 25, 7, 25, 7, 25, 7, 25, 56, 200, 0.28, 0, 0, 0, -1, 2009, 2012, 2013, 2016);
+
 -- --------------------------------------------------------
 
 --
@@ -211,12 +241,14 @@ CREATE TABLE IF NOT EXISTS `message` (
 
 CREATE TABLE IF NOT EXISTS `message_list` (
   `t_id` int(10) NOT NULL AUTO_INCREMENT,
-  `mail_id` varchar(10) NOT NULL,
+  `mail_id` int(10) NOT NULL,
   `u_id` int(10) NOT NULL,
   `register` varchar(3) NOT NULL DEFAULT 'n',
   `round` varchar(2) NOT NULL DEFAULT '0',
   PRIMARY KEY (`t_id`),
-  KEY `u_id` (`u_id`)
+  KEY `u_id` (`u_id`),
+  KEY `mail_id` (`mail_id`),
+  KEY `mail_id_2` (`mail_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -249,7 +281,8 @@ CREATE TABLE IF NOT EXISTS `resume` (
 --
 
 INSERT INTO `resume` (`u_id`, `address`, `project`, `miniproject`, `certification`, `sy1`, `py1`, `Hname`, `py2`, `sname`, `py3`, `obj`, `langu`, `publication`) VALUES
-(2, 'Panvel', ' NA   ', 'NA', 'Na', '2013', '2016', 'ARKP', '2013', 'Yakub Baig School', '2009', 'Nothing', 'Java,c', 'Narayan Publication');
+(2, 'Panvel', ' NA   ', 'NA', 'Na', '2013', '2016', 'ARKP', '2013', 'Yakub Baig School', '2009', 'Nothing', 'Java,c', 'Narayan Publication'),
+(6, 'Mumbai', ' NA ', 'NA', 'NA', '2013', '2016', 'Sabu Engineering', '2013', 'ABC', '2009', 'NA', 'Java', 'Noting');
 
 -- --------------------------------------------------------
 
@@ -286,7 +319,8 @@ CREATE TABLE IF NOT EXISTS `student_details` (
 --
 
 INSERT INTO `student_details` (`stname`, `faname`, `moname`, `u_id`, `smart_card`, `dob`, `st_mobile`, `pa_mobile`, `r_number`, `division`, `branch`, `emailid`, `type`, `gender`, `passyear`, `defaulter`, `placed`, `c_id`) VALUES
-('hAMID', 'Abdul', 'Noori', 2, '123456', '1994-09-20', 2147483647, 2147483647, 1, 4, 'comp', 'noorihamid1994@gmail.com', 'diploma', 'male', 0, 0, 0, NULL);
+('Hamid', 'Abdul Qadir', 'Noori', 2, '123456', '1994-09-20', 2147483647, 2147483647, 1, 4, 'comp', 'noorihamid1994@gmail.com', 'diploma', '', 2016, 0, 0, NULL),
+('Yusuf', 'ABDUL ', 'MIss ABDul', 6, '12345', '1994-09-20', 123457890, 12457980, 30, 4, 'comp', 'yusuf@gmail.com', 'hsc', 'male', 2016, 0, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -302,7 +336,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `valid` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`u_id`),
   UNIQUE KEY `smartcard_no` (`smartcard_no`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `user`
@@ -310,9 +344,10 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 INSERT INTO `user` (`u_id`, `uname`, `password`, `smartcard_no`, `valid`) VALUES
 (2, 'noorihamid', '123456', '123456', 1),
-(3, 'hamid', 'dddd', '1234', 0),
-(4, 'AMit', 'sdsd', '12345', 0),
-(5, 'AMit ', '123456', '123', 0);
+(6, 'Yusuf', '12345', '12345', 1),
+(7, 'Suhail', '1234', '1234', 1),
+(8, 'Hamid', '123', '123', 1),
+(9, 'hamid', '123123', '123123', 1);
 
 --
 -- Constraints for dumped tables
@@ -346,6 +381,7 @@ ALTER TABLE `message`
 -- Constraints for table `message_list`
 --
 ALTER TABLE `message_list`
+  ADD CONSTRAINT `message_list_ibfk_2` FOREIGN KEY (`mail_id`) REFERENCES `message` (`mail_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `message_list_ibfk_1` FOREIGN KEY (`u_id`) REFERENCES `user` (`u_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
