@@ -3,12 +3,12 @@ include'config.php';
 require_once'session.php';
 $reg_id=$_SESSION['login_user'];
 $name='';
-$sql=mysql_query("select * from user where reg_id='$reg_id'");
+$sql=mysql_query("select * from user where u_id=$reg_id");
 while($x=mysql_fetch_array($sql)){
     $name=$x['uname'];
 }
 $gender1='';
-$sql=mysql_query("select * from student_details where reg_id='$reg_id'");
+$sql=mysql_query("select * from student_details where u_id=$reg_id");
 while($x=mysql_fetch_array($sql)){
     $gender=$x['gender'];
     $type=$x['type'];
@@ -16,7 +16,7 @@ while($x=mysql_fetch_array($sql)){
     else{$gender1='female.png';}
 }
 $out='';
-$sql=mysql_query("select * from chat where user_id='$reg_id' order by message_id ASC");
+$sql=mysql_query("select * from chat where u_id=$reg_id order by message_id ASC");
 while($s=mysql_fetch_array($sql)){
     $message=$s['message'];
     $curdate=$s['cur_date'];
@@ -72,15 +72,15 @@ else{
   <!-- Ionicons -->
   <link rel="stylesheet" href="./css/ionicons.min.css">
   <!-- fullCalendar 2.2.5-->
-  <link rel="stylesheet" href=" plugins/fullcalendar/fullcalendar.min.css">
-  <link rel="stylesheet" href=" plugins/fullcalendar/fullcalendar.print.css" media="print">
+  <link rel="stylesheet" href="plugins/fullcalendar/fullcalendar.min.css">
+  <link rel="stylesheet" href="plugins/fullcalendar/fullcalendar.print.css" media="print">
   <!-- Theme style -->
-  <link rel="stylesheet" href=" dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href=" dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
   <!-- iCheck -->
-  <link rel="stylesheet" href=" plugins/iCheck/flat/blue.css">
+  <link rel="stylesheet" href="plugins/iCheck/flat/blue.css">
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>

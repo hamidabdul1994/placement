@@ -1,11 +1,8 @@
 <?php
-include'config.php';
-require_once'session.php';
-$reg_id=$_SESSION['login_user'];
-$sql=mysql_query("select * from user where reg_id='$reg_id'");
-while($x=mysql_fetch_array($sql)){
-    $name=$x['uname'];
-}
+include'../config.php';
+require_once'session_guest.php';
+$reg_id=$_SESSION['guest_user'];
+
 ?>
 
 <!DOCTYPE html>
@@ -13,7 +10,7 @@ while($x=mysql_fetch_array($sql)){
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>MHSSCE Placement| Personal details</title>
+  <title>MHSSCE Placement| Change Password</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.5 -->
@@ -26,7 +23,11 @@ while($x=mysql_fetch_array($sql)){
   <link rel="stylesheet" href=" dist/css/AdminLTE.min.css">
   <!-- iCheck -->
   <link rel="stylesheet" href=" plugins/iCheck/square/blue.css">
-
+<link rel="stylesheet" href=" dist/css/AdminLTE.min.css">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href=" dist/css/skins/_all-skins.min.css">
+  <!-- iCheck -->
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -34,7 +35,8 @@ while($x=mysql_fetch_array($sql)){
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 </head>
-<body class="hold-transition register-page">
+<body class="hold-transition skin-blue sidebar-mini">
+    <?php include('header_guest.php') ?>
 <div class="register-box">
   <div class="register-logo">
     <a href="index.php"><b>MHSSCE</b>Placement</a>
@@ -43,7 +45,7 @@ while($x=mysql_fetch_array($sql)){
   <div class="register-box-body">
     <p class="login-box-msg">Choose your new password</p>
 
-    <form action="changepassworddb.php" method="post">
+    <form action="changepassworddb_guest.php" method="post">
       <div class="form-group has-feedback">
         <input type="password" class="form-control" placeholder="New password" name="password" required>
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
@@ -76,13 +78,7 @@ while($x=mysql_fetch_array($sql)){
 <!-- iCheck -->
 <script src=" plugins/iCheck/icheck.min.js"></script>
 <script>
-  $(function () {
-    $('input').iCheck({
-      checkboxClass: 'icheckbox_square-blue',
-      radioClass: 'iradio_square-blue',
-      increaseArea: '20%' // optional
-    });
-  });
+
 </script>
 </body>
 </html>

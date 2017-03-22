@@ -14,7 +14,7 @@ while($x=mysql_fetch_array($sql)){
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Sakec Placement| Personal details</title>
+  <title>MHSSCE Placement| Personal details</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.5 -->
@@ -76,7 +76,7 @@ function checkform(form)
 <body class="hold-transition register-page">
 <div class="register-box">
   <div class="register-logo">
-    <a href="index.php"><b>SAKEC</b>Placement</a>
+    <a href="index.php"><b>MHSSCE</b>Placement</a>
   </div>
 
   <div class="register-box-body">

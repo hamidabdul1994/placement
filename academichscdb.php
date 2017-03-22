@@ -5,11 +5,11 @@ require_once'session.php';
 
 if(isset($_POST['submit']))
    {
-$reg_id=$_SESSION['login_user'];       
-    
+$reg_id=$_SESSION['login_user'];
+
         $sscmarks=$_POST['sscmarks'];
         $sscoutoff=$_POST['sscoutoff'];
-        $sscpercentage=(($sscmarks)/($sscoutoff)*100);   
+        $sscpercentage=(($sscmarks)/($sscoutoff)*100);
     $sscpercentage=sprintf('%0.2f', $sscpercentage);
         $hscmarks=$_POST['hscmarks'];
         $hscoutoff=$_POST['hscoutoff'];
@@ -39,23 +39,19 @@ $reg_id=$_SESSION['login_user'];
     $totaloutoff=(($sem1outoff)+($sem2outoff)+($sem3outoff)+($sem4outoff)+($sem5outoff)+($sem6outoff)+($sem7outoff)+($sem8outoff));
     $degreepointer=(($totalmarks)/($totaloutoff));
      $degreepointer=sprintf('%0.2f', $degreepointer);
-    echo $degreepointer;
         $livekt=$_POST['livekt'];
         $deadkt=$_POST['deadkt'];
         $attempts=$_POST['attempts'];
         $drops=(($py3-$sy)-4);
-    
-        $sql=mysql_query("select * from hscmark where reg_id='$reg_id'");
+
+        $sql=mysql_query("select * from hscmark where u_id=$reg_id");
 	    $count=mysql_num_rows($sql);
 	    if($count==0)
         {
-        mysql_query("insert into hscmark set sscmarks='$sscmarks',sscoutoff='$sscoutoff',sscpercentage='$sscpercentage',hscmarks='$hscmarks',hscoutoff='$hscoutoff',hscpercentage='$hscpercentage',sem1marks='$sem1marks',sem1outoff='$sem1outoff',sem2marks='$sem2marks',sem2outoff='$sem2outoff',sem3marks='$sem3marks',sem3outoff='$sem3outoff',sem4marks='$sem4marks',sem4outoff='$sem4outoff',sem5marks='$sem5marks',sem5outoff='$sem5outoff',sem6marks='$sem6marks',sem6outoff='$sem6outoff',sem7marks='$sem7marks',sem7outoff='$sem7outoff',sem8marks='$sem8marks',sem8outoff='$sem8outoff',py1='$py1',py2='$py2',py3='$py3',sy='$sy',livekt='$livekt',deadkt='$deadkt',attempts='$attempts',drops='$drops',totalmarks='$totalmarks',totaloutoff='$totaloutoff',degreepointer='$degreepointer',reg_id='$reg_id'");
-      
-            mysql_error();
-           
-          
+        mysql_query("insert into hscmark set sscmarks='$sscmarks',sscoutoff='$sscoutoff',sscpercentage='$sscpercentage',hscmarks='$hscmarks',hscoutoff='$hscoutoff',hscpercentage='$hscpercentage',sem1marks='$sem1marks',sem1outoff='$sem1outoff',sem2marks='$sem2marks',sem2outoff='$sem2outoff',sem3marks='$sem3marks',sem3outoff='$sem3outoff',sem4marks='$sem4marks',sem4outoff='$sem4outoff',sem5marks='$sem5marks',sem5outoff='$sem5outoff',sem6marks='$sem6marks',sem6outoff='$sem6outoff',sem7marks='$sem7marks',sem7outoff='$sem7outoff',sem8marks='$sem8marks',sem8outoff='$sem8outoff',py1='$py1',py2='$py2',py3='$py3',sy='$sy',livekt='$livekt',deadkt='$deadkt',attempts='$attempts',drops='$drops',totalmarks='$totalmarks',totaloutoff='$totaloutoff',degreepointer='$degreepointer',u_id=$reg_id");
+          mysql_error();
        }
-    header('location:welcome.php');   
+    header('location:welcome.php');
    }
 
 ?>

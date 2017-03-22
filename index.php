@@ -8,7 +8,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Sakec Placement</title>
+    <title>MHSSCE Placement</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -35,7 +35,7 @@
 
           <div class="login-logo" >
 
-            <a href="index.php"><b>Login</b>Form</a>
+            <a href="index.php">Student <b>Login</b>Form</a>
           </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
@@ -63,7 +63,7 @@
       </form>
 
       <a href="forgotpswd.php">I forgot my password</a><br>
-      <a href="guest.php">Guest registration</a><br>
+      <a href="userRegister.php">Student registration</a><br>
     </div>
     <!-- /.login-box-body -->
   </div>

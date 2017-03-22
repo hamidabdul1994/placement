@@ -1,18 +1,19 @@
 <?php
 include'config.php';
 require_once'session.php';
-error_reporting(0);
+// error_reporting(0);
 $reg_id=$_SESSION['login_user'];
-$sql=mysql_query("select * from user where reg_id='$reg_id'");
+echo "usersane:$reg_id";
+$sql=mysql_query("select * from user where u_id=$reg_id");
 while($x=mysql_fetch_array($sql)){
     $name=$x['uname'];
 }
 
-$sql=mysql_query("select * from student_details where reg_id='$reg_id'");
+$sql=mysql_query("select * from student_details where u_id=$reg_id");
 while ($b=mysql_fetch_array($sql)) {
 	$stname=$b['stname'];
 }
-$sql=mysql_query("select * from hscmark where reg_id='$reg_id'");
+$sql=mysql_query("select * from hscmark where u_id=$reg_id");
 while ($b=mysql_fetch_array($sql)) {
 	$sscmarks=$b['sscmarks'];
     $sscoutoff=$b['sscoutoff'];
@@ -84,8 +85,6 @@ if(isset($_POST['update']))
      if($count==1)
         {
         mysql_query("update hscmark set sem1marks='$sem1marks',sem1outoff='$sem1outoff',sem2marks='$sem2marks',sem2outoff='$sem2outoff',sem3marks='$sem3marks',sem3outoff='$sem3outoff',sem4marks='$sem4marks',sem4outoff='$sem4outoff',sem5marks='$sem5marks',sem5outoff='$sem5outoff',sem6marks='$sem6marks',sem6outoff='$sem6outoff',sem7marks='$sem7marks',sem7outoff='$sem7outoff',sem8marks='$sem8marks',sem8outoff='$sem8outoff',totalmarks='$totalmarks',totaloutoff='$totaloutoff',degreepointer='$degreepointer',livekt='$livekt',deadkt='$deadkt',py1='$py1',py2='$py2',py3='$py3',sy='$sy',attempts='$attempts' where reg_id='$reg_id'");
-
-
        }
 }
 
@@ -95,7 +94,7 @@ if(isset($_POST['update']))
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Sakec Placement | Academic</title>
+  <title>MHSSCE Placement | Academic</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.5 -->

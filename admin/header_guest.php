@@ -1,4 +1,4 @@
-<?php 
+<?php
 $gname='';$cname='';
 $reg_id=$_SESSION['guest_user'];
 $sql=mysql_query("select * from guest where g_id='$reg_id'");
@@ -28,30 +28,30 @@ while($x=mysql_fetch_array($sql)){
 
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
-       
-         
+
+
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="profile.png" class="user-image" alt="User Image">
-              
+              <img src="../profile.png" class="user-image" alt="User Image">
+
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="admin.png" class="img-circle" alt="User Image">
+                <img src="../admin.png" class="img-circle" alt="User Image">
 
                 <p>
                    <?php echo $gname ?><br/>
                    <small><?php echo $cname ?></small>
-                  
+
                 </p>
               </li>
               <!-- Menu Body -->
-              
+
               <!-- Menu Footer-->
               <li class="user-footer">
-                
+
                 <div class="pull-right">
                   <a href="logout.php" class="btn btn-default btn-flat">Sign out</a>
                 </div>
@@ -59,7 +59,7 @@ while($x=mysql_fetch_array($sql)){
             </ul>
           </li>
           <!-- Control Sidebar Toggle Button -->
-          
+
         </ul>
       </div>
     </nav>
@@ -68,12 +68,12 @@ while($x=mysql_fetch_array($sql)){
   <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
-     
+
       <!-- search form -->
-      
+
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
-      
+
         <ul class="sidebar-menu">
         <li class="header" style=" font-size: 20px; color: white;"><p>MAIN NAVIGATION</p></li>
         <li class="treeview">

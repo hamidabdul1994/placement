@@ -1,5 +1,5 @@
-<?php 
-include'config.php';
+<?php
+include'../config.php';
 require_once'session_admin.php';
 $reg_id=$_GET['reg_id'];
 $c=$_GET['count'];
@@ -20,7 +20,7 @@ if($count>$c){
 		echo '
 		    <div class="item">
 		                <img src="profile.png" alt="user image" class="offline">
-		
+
 		                <p class="message">
 		                  <a href="#" class="name">
 		                    <small class="text-muted pull-right">'.$curdate.' <i class="fa fa-clock-o"></i> '.$curtime.'</small>
@@ -29,14 +29,14 @@ if($count>$c){
 		                  '.$message.'
 		                </p>
 		              </div>
-    
+
     ';
 	}
 		else{
 				echo '
 		    <div class="item">
 		                <img src="profile.png" alt="user image" class="online">
-		
+
 		                <p class="message">
 		                  <a href="#" class="name">
 		                    <small class="text-muted pull-right">'.$curdate.' <i class="fa fa-clock-o"></i> '.$curtime.'</small>
@@ -45,9 +45,9 @@ if($count>$c){
 		                  '.$message.'
 		                </p>
 		              </div>
-		    
+
 		    ';
-			
+
 		}
 }
 }

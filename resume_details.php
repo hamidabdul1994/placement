@@ -14,11 +14,11 @@ $py31='';
 $obj1='';
 $lang='';
 $u_id=$_SESSION['login_user'];
-$sql=mysql_query("select * from user where u_id='$u_id'");
+$sql=mysql_query("select * from user where u_id=$u_id");
 while($x=mysql_fetch_array($sql)){
     $name=$x['uname'];
 }
-$sql=mysql_query("select * from resume where u_id='$u_id'");
+$sql=mysql_query("select * from resume where u_id=$u_id");
 while ($a=mysql_fetch_array($sql)) {
 	$project1= ucfirst($a['project']);
 	$miniproject1=ucfirst($a['miniproject']);
@@ -49,19 +49,19 @@ if(isset($_POST['update']))
         $py3=$_POST['py3'];
         $langu=ucfirst($_POST['langu']);
         $obj=ucfirst($_POST['obj']);
-        $sql=mysql_query("select * from resume where u_id='$u_id'");
+        $sql=mysql_query("select * from resume where u_id=$u_id");
 	      $count=mysql_num_rows($sql);
 	    if($count==1)
         {
-        mysql_query("update resume set address='$address',project='$project',miniproject='$miniproject',certification='$certification',sy1='$sy1',py1='$py1',Hname='$Hname',py2='$py2',sname='$sname',py3='$py3',langu='$langu',obj='$obj',publication='$publication' where u_id='$u_id' ");
+        mysql_query("update resume set address='$address',project='$project',miniproject='$miniproject',certification='$certification',sy1='$sy1',py1='$py1',Hname='$Hname',py2='$py2',sname='$sname',py3='$py3',langu='$langu',obj='$obj',publication='$publication' where u_id=$u_id ");
         mysql_error();
         }
       else
         {
-        mysql_query("insert into resume set address='$address',project='$project',miniproject='$miniproject',certification='$certification',sy1='$sy1',py1='$py1',Hname='$Hname',py2='$py2',sname='$sname',py3='$py3',langu=$langu,obj='$obj',publication='$publication' u_id='$u_id'");
+        mysql_query("insert into resume set address='$address',project='$project',miniproject='$miniproject',certification='$certification',sy1='$sy1',py1='$py1',Hname='$Hname',py2='$py2',sname='$sname',py3='$py3',langu=$langu,obj='$obj',publication='$publication' u_id=$u_id");
         mysql_error();
         }
-    //header('location:selector.php');
+    header('location:selector.php');
 }
 ?>
 
@@ -70,7 +70,7 @@ if(isset($_POST['update']))
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Sakec Placement| Personal details</title>
+  <title>MHSSCE Placement| Personal details</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.5 -->
@@ -146,7 +146,7 @@ if(isset($_POST['update']))
                  </div>
                     <legend>Degree</legend><label for="inputEmail3" class="col-sm-4 control-label">College Name</label>
                   <div class="col-sm-8">
-                      <input type="text" class="form-control" name="dname" value="Sabu Sibbik ENGINEERING COLLEGE"readonly>
+                      <input type="text" class="form-control" name="dname" value="M. H. Saboo Siddik College of Engineering"readonly>
                   </div>
                  </div>
                     <div class="form-group">

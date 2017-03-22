@@ -33,7 +33,7 @@ include'login.php';
 
         <div class="login-logo" >
 
-          <a href="index.php"><b>Login</b>Form</a>
+          <a href="index.php">Admin and Guest <b>Login</b></a>
         </div>
   <!-- /.login-logo -->
   <div class="login-box-body">

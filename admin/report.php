@@ -1,5 +1,5 @@
 <?php
-include'config.php';
+include'../config.php';
 require_once'session_admin.php';
 $reg_id=$_SESSION['login_user'];
 $out='';
@@ -12,20 +12,20 @@ while ($a=mysql_fetch_array($sql)) {
 	for($j=1;$j<=$round;$j++){
 		$y[$j]=0;
 	}
-	$sq=mysql_fetch_array(mysql_query("select * from message where company_id='$company'"));
+	$sq=mysql_fetch_array(mysql_query("select * from message where c_id=$company"));
 	$mail_id=$sq['mail_id'];
 	$total_it=0;
 	$total_cs=0;
 	$total_elec=0;
 	$total_extc=0;
-	$sqq=mysql_query("select * from message_list where mail_id='$mail_id' and register='y'");
+	$sqq=mysql_query("select * from message_list where mail_id=$mail_id and register='y'");
 	while ($x=mysql_fetch_array($sqq)) {
 		$user_id=$x['user_id'];
 		$stu_round=$x['round'];
 		for($j=1;$j<=$stu_round;$j++){
 			$y[$j]=$y[$j]+1;
 		}
-		$sqp=mysql_fetch_array(mysql_query("select * from student_details where reg_id='$user_id'"));
+		$sqp=mysql_fetch_array(mysql_query("select * from student_details where u_id=$user_id"));
 		$branch=$sqp['branch'];
 		if($branch=='comp'){
 			$total_cs=$total_cs+1;
@@ -73,18 +73,18 @@ while ($a=mysql_fetch_array($sql)) {
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.5 -->
-  <link rel="stylesheet" href=" bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="./css/font-awesome.css">
+  <link rel="stylesheet" href="../css/font-awesome.css">
   <!-- Ionicons -->
-  <link rel="stylesheet" href="./css/ionicons.min.css">
+  <link rel="stylesheet" href="../css/ionicons.min.css">
 
   <!-- Theme style -->
-  <link rel="stylesheet" href=" dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href=" dist/css/skins/_all-skins.min.css">
-  <link rel="stylesheet" href="plugins/datatables/extra/buttons.dataTables.min.css"/>
+  <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="../plugins/datatables/extra/buttons.dataTables.min.css"/>
 <style>
 #example1_filter{float:right}
 </style>
@@ -134,7 +134,7 @@ while ($a=mysql_fetch_array($sql)) {
   <!-- /.content-wrapper -->
   <footer class="main-footer">
 		<?php
-		include 'footer.php';
+		include '../footer.php';
 		 ?>
   </footer>
 
@@ -146,23 +146,23 @@ while ($a=mysql_fetch_array($sql)) {
 <!-- ./wrapper -->
 
 <!-- jQuery 2.1.4 -->
-<script src=" plugins/jQuery/jQuery-2.1.4.min.js"></script>
+<script src="../plugins/jQuery/jQuery-2.1.4.min.js"></script>
 <!-- Bootstrap 3.3.5 -->
-<script src=" bootstrap/js/bootstrap.min.js"></script>
+<script src="../bootstrap/js/bootstrap.min.js"></script>
 <!-- Slimscroll -->
-<script src=" plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <!-- AdminLTE App -->
-<script src=" dist/js/app.min.js"></script>
+<script src="../dist/js/app.min.js"></script>
 
-<script src="plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="plugins/datatables/dataTables.bootstrap.min.js"></script>
-<script src="plugins/datatables/extra/buttons.flash.min.js"></script>
-<script src="plugins/datatables/extra/buttons.html5.min.js"></script>
-<script src="plugins/datatables/extra/buttons.print.min.js"></script>
-<script src="plugins/datatables/extra/dataTables.buttons.min.js"></script>
-<script src="plugins/datatables/extra/jszip.min.js"></script>
-<script src="plugins/datatables/extra/pdfmake.min.js"></script>
-<script src="plugins/datatables/extra/vfs_fonts.js"></script>
+<script src="../plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="../plugins/datatables/dataTables.bootstrap.min.js"></script>
+<script src="../plugins/datatables/extra/buttons.flash.min.js"></script>
+<script src="../plugins/datatables/extra/buttons.html5.min.js"></script>
+<script src="../plugins/datatables/extra/buttons.print.min.js"></script>
+<script src="../plugins/datatables/extra/dataTables.buttons.min.js"></script>
+<script src="../plugins/datatables/extra/jszip.min.js"></script>
+<script src="../plugins/datatables/extra/pdfmake.min.js"></script>
+<script src="../plugins/datatables/extra/vfs_fonts.js"></script>
 <script>
 $(document).ready(function(){
 	$("#example1").DataTable({

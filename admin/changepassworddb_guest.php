@@ -1,5 +1,5 @@
 <?php
-include'config.php';
+include'../config.php';
 require_once'session_guest.php';
 $reg_id=$_SESSION['guest_user'];
 

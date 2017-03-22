@@ -2,7 +2,7 @@
 include'config.php';
 require_once'session_admin.php';
 $reg_id=$_SESSION['login_user'];
-$sql=mysql_query("select * from admin where reg_id='$reg_id'");
+$sql=mysql_query("select * from admin where username='$reg_id'");
 $result=mysql_query("select * from guest ");
 
 ?>
@@ -11,25 +11,25 @@ $result=mysql_query("select * from guest ");
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Sakec Placement | Company Registration</title>
+  <title>MHSSCE Placement | Company Registration</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.5 -->
-  <link rel="stylesheet" href=" bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="./css/font-awesome.css">
+  <link rel="stylesheet" href="../css/font-awesome.css">
   <!-- Ionicons -->
-  <link rel="stylesheet" href="./css/ionicons.min.css">
+  <link rel="stylesheet" href="../css/ionicons.min.css">
   <!-- fullCalendar 2.2.5-->
-  <link rel="stylesheet" href=" plugins/fullcalendar/fullcalendar.min.css">
-  <link rel="stylesheet" href=" plugins/fullcalendar/fullcalendar.print.css" media="print">
+  <link rel="stylesheet" href="../plugins/fullcalendar/fullcalendar.min.css">
+  <link rel="stylesheet" href="../plugins/fullcalendar/fullcalendar.print.css" media="print">
   <!-- Theme style -->
-  <link rel="stylesheet" href=" dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href=" dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
   <!-- iCheck -->
-  <link rel="stylesheet" href=" plugins/iCheck/flat/blue.css">
+  <link rel="stylesheet" href="../plugins/iCheck/flat/blue.css">
 <style>
 table {
 
@@ -108,7 +108,7 @@ while ($row=mysql_fetch_array($result)) {
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <?php
-    include 'footer.php';
+    include '../footer.php';
      ?>
   </footer>
 
@@ -120,17 +120,17 @@ while ($row=mysql_fetch_array($result)) {
 <!-- ./wrapper -->
 
 <!-- jQuery 2.1.4 -->
-<script src=" plugins/jQuery/jQuery-2.1.4.min.js"></script>
+<script src="../plugins/jQuery/jQuery-2.1.4.min.js"></script>
 <!-- Bootstrap 3.3.5 -->
-<script src=" bootstrap/js/bootstrap.min.js"></script>
+<script src="../bootstrap/js/bootstrap.min.js"></script>
 <!-- Slimscroll -->
-<script src=" plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
-<script src=" plugins/fastclick/fastclick.js"></script>
+<script src="../plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
-<script src=" dist/js/app.min.js"></script>
+<script src="../dist/js/app.min.js"></script>
 <!-- iCheck -->
-<script src=" plugins/iCheck/icheck.min.js"></script>
+<script src="../plugins/iCheck/icheck.min.js"></script>
 <!-- Page Script -->
 <script>
 $(document).ready(function(){

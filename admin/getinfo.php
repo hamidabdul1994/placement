@@ -1,5 +1,5 @@
 <?php
-include'config.php';
+include'../config.php';
 require_once'session_guest.php';
 $reg_id=$_SESSION['guest_user'];
 $out='';
@@ -28,7 +28,7 @@ if($count>1){
 	<td><?php echo $l['stname'] ?></td>
 	<td><?php echo $x['degreepointer'] ?></td>
 </tr>
-<?php		
+<?php
 $i++;
 	}
 }
@@ -46,7 +46,7 @@ if($count>1){
 	<td><?php echo $l['stname'] ?></td>
 	<td><?php echo $x['degreepointer'] ?></td>
 </tr>
-<?php		
+<?php
 $i++;
 	}
 }

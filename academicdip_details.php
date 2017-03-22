@@ -54,7 +54,7 @@ while($x=mysql_fetch_array($sql)){
 
 <div class="register-box" style='width: 825px;'>
   <div class="register-logo">
-    <a href="index.php"><b>SAKEC</b>Placement</a>
+    <a href="index.php"><b>MHSSCE</b>Placement</a>
   </div>
 
   <div class="register-box-body" >

@@ -1,13 +1,10 @@
 <?php
 include'../config.php';
 $error='';
-echo "entry";
 if(isset($_POST['login']))
    {
-     echo "string";
       $username=mysql_real_escape_string($_POST['username']);
       $password=mysql_real_escape_string($_POST['password']);
-      echo "user=$username and password=$password";
       $sql1=mysql_query("select * from admin where username='$username' and password='$password' ") or die(mysql_error());
       $count1=mysql_num_rows($sql1);
       $error='<i class="ion-alert"></i> Admin::'.$count1;
@@ -21,7 +18,7 @@ if(isset($_POST['login']))
        }
        else if($count1==0)
        {
-       	  $sql2=mysql_query("select * from guest where g_id='$username' and pwd='$password'");
+       	  $sql2=mysql_query("select * from guest where g_id=$username and pwd='$password'");
 		      $count2=mysql_num_rows($sql2);
           $error='<i class="ion-alert"></i> Admin::'.$count2;
 		      if($count2==1){
@@ -36,5 +33,4 @@ if(isset($_POST['login']))
 			$error='<i class="ion-alert"></i> Invalid login credentials';
 		}
    }
-
 ?>

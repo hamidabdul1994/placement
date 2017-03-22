@@ -140,9 +140,6 @@ if(isset($_POST['update']))
                   </div>
                 </div>
               	</div>
-
-
-
                 <div class="col-md-6">
                 	<div class="form-group">
                   <label for="inputEmail3" class="col-sm-3 control-label">Registration id</label>

@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Sakec placement | Guest Registration Page</title>
+  <title>MHSSCE placement | Guest Registration Page</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.5 -->
@@ -25,11 +25,11 @@
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
-    
+
      <script language="javascript" type="text/javascript">
 function checkform(form)
 {
-	
+
     apos=form.gemail.value.indexOf("@");
     dotpos=form.gemail.vale.lastindexof(".");
     if(apos<1 || dotpos-apos<2)
@@ -40,12 +40,12 @@ function checkform(form)
     }
 }
 </script>
-    
+
 </head>
 <body class="hold-transition register-page">
 <div class="register-box">
   <div class="register-logo">
-    <a href="index.php"><b>SAKEC</b> Placement</a>
+    <a href="index.php"><b>MHSSCE</b> Placement</a>
       <br>Guest Registration
   </div>
 
@@ -65,9 +65,9 @@ function checkform(form)
         <input type="text" class="form-control" placeholder="Company name" name="cname" required>
         <span class="glyphicon glyphicon-briefcase form-control-feedback"></span>
       </div>
-      
+
       <div class="row">
-        
+
         <!-- /.col -->
         <div class="col-xs-12">
           <button type="submit" class="btn btn-primary btn-block btn-flat" name="register">Register</button>
@@ -88,13 +88,13 @@ function checkform(form)
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-danger pull-right" id="close" data-dismiss="modal">Close</button>
-                
+
               </div>
             </div>
             <!-- /.modal-content -->
           </div>
           <!-- /.modal-dialog -->
-        </div>   
+        </div>
 
   </div>
   <!-- /.form-box -->
@@ -121,7 +121,7 @@ $(document).ready(function(){
      $("#register").click(function(){
         $(".modal").modal('show');
      });
-}) 
+})
 </script>
 </body>
 </html>

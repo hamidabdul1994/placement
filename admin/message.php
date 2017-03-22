@@ -1,19 +1,19 @@
 <?php
-include'config.php';
+include'../config.php';
 require_once'session_admin.php';
 $out='';
 $reg_id=$_SESSION['login_user'];
-$sql=mysql_query("select Distinct user_id from chat order by message_id desc");
+$sql=mysql_query("select Distinct u_id from chat order by message_id desc");
 while ($a=mysql_fetch_array($sql)) {
-	$user_id=$a['user_id'];
-	$sql1=mysql_query("select * from user where reg_id='$user_id'");
-	$count=mysql_num_rows(mysql_query("select * from chat where user_id='$user_id'"));
+	$user_id=$a['u_id'];
+	$sql1=mysql_query("select * from user where u_id=$user_id");
+	$count=mysql_num_rows(mysql_query("select * from chat where u_id=$user_id"));
 	while ($b=mysql_fetch_array($sql1)) {
-        $sql2=mysql_query("select * from student_details where reg_id='$user_id'");
+        $sql2=mysql_query("select * from student_details where u_id=$user_id");
 while($x=mysql_fetch_array($sql2)){
     $gender=$x['gender'];
-    if($gender=="male"){$gender1='male.png';}
-    else{$gender1='female.png';}
+    if($gender=="male"){$gender1='../male.png';}
+    else{$gender1='../female.png';}
 
 }
 		$uname=$b['uname'];
@@ -44,19 +44,19 @@ while($x=mysql_fetch_array($sql2)){
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.5 -->
-  <link rel="stylesheet" href=" bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="./css/font-awesome.css">
+  <link rel="stylesheet" href="../css/font-awesome.css">
   <!-- Ionicons -->
-  <link rel="stylesheet" href="./css/ionicons.min.css">
+  <link rel="stylesheet" href="../css/ionicons.min.css">
   <!-- fullCalendar 2.2.5-->
-  <link rel="stylesheet" href=" plugins/fullcalendar/fullcalendar.min.css">
-  <link rel="stylesheet" href=" plugins/fullcalendar/fullcalendar.print.css" media="print">
+  <link rel="stylesheet" href="../plugins/fullcalendar/fullcalendar.min.css">
+  <link rel="stylesheet" href="../plugins/fullcalendar/fullcalendar.print.css" media="print">
   <!-- Theme style -->
-  <link rel="stylesheet" href=" dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href=" dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -122,7 +122,7 @@ while($x=mysql_fetch_array($sql2)){
   <!-- /.content-wrapper -->
   <footer class="main-footer">
 		<?php
-		include 'footer.php';
+		include '../footer.php';
 		 ?>
   </footer>
 
@@ -134,15 +134,15 @@ while($x=mysql_fetch_array($sql2)){
 <!-- ./wrapper -->
 
 <!-- jQuery 2.1.4 -->
-<script src=" plugins/jQuery/jQuery-2.1.4.min.js"></script>
+<script src="../plugins/jQuery/jQuery-2.1.4.min.js"></script>
 <!-- Bootstrap 3.3.5 -->
-<script src=" bootstrap/js/bootstrap.min.js"></script>
+<script src="../bootstrap/js/bootstrap.min.js"></script>
 <!-- Slimscroll -->
-<script src=" plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
-<script src=" plugins/fastclick/fastclick.js"></script>
+<script src="../plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
-<script src=" dist/js/app.min.js"></script>
+<script src="../dist/js/app.min.js"></script>
 
 <!-- Page Script -->
 <script>
@@ -217,6 +217,6 @@ while($x=mysql_fetch_array($sql2)){
 
 </script>
 <!-- AdminLTE for demo purposes -->
-<script src=" dist/js/demo.js"></script>
+<script src="../dist/js/demo.js"></script>
 </body>
 </html>

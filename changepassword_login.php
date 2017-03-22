@@ -13,7 +13,7 @@ while($x=mysql_fetch_array($sql)){
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Sakec Placement| Change Password</title>
+  <title>MHSSCE Placement| Change Password</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.5 -->
@@ -42,7 +42,7 @@ while($x=mysql_fetch_array($sql)){
     <?php include('header.php') ?>
 <div class="register-box">
   <div class="register-logo">
-    <a href="index.php"><b>SAKEC</b>Placement</a>
+    <a href="index.php"><b>MHSSCE</b>Placement</a>
   </div>
 
   <div class="register-box-body">
@@ -57,10 +57,10 @@ while($x=mysql_fetch_array($sql)){
         <input type="password" class="form-control" placeholder="Retype New password" required>
         <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
       </div>
-       
-         
+
+
       <div class="row">
-        
+
         <!-- /.col -->
         <div class="col-xs-4">
           <button type="submit" class="btn btn-primary btn-block btn-flat" name="submit">Submit</button>

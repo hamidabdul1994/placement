@@ -109,6 +109,13 @@ while($x=mysql_fetch_array($sql)){
             <i class="fa fa-angle-left pull-right"></i>
           </a>
           </li>
+          <li class="treeview">
+        <a href="userValidate.php">
+          <i class="fa fa-briefcase"></i>
+          <span>User Validate</span>
+          <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        </li>
             <li class="treeview">
           <a href="message.php">
             <i class="fa fa-envelope"></i>

@@ -1,14 +1,19 @@
-<?php 
+<?php
 $gender='';
 $reg_id=$_SESSION['login_user'];
-$sql=mysql_query("select * from student_details where reg_id='$reg_id'");
+$sql=mysql_query("select * from student_details where u_id=$reg_id");
 while($x=mysql_fetch_array($sql)){
     $gender=$x['gender'];
     $type=$x['type'];
     if($gender=="male"){$gender1='male.png';}
     else{$gender1='female.png';}
     if($type=="hsc"){$type1='academic_hsc.php';}
-    else{$type1='academic_diploma.php';}
+    else if ($type=="diploma"){
+      $type1='academic_diploma.php';
+    }else{
+      $type1='selector.php';
+    }
+
 }
 
 ?>
@@ -32,8 +37,8 @@ while($x=mysql_fetch_array($sql)){
 
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
-          
-         
+
+
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -51,10 +56,10 @@ while($x=mysql_fetch_array($sql)){
                 </p>
               </li>
               <!-- Menu Body -->
-              
+
               <!-- Menu Footer-->
               <li class="user-footer">
-                
+
                 <div class="pull-right">
                   <a href="logout.php" class="btn btn-default btn-flat">Sign out</a>
                 </div>
@@ -62,7 +67,7 @@ while($x=mysql_fetch_array($sql)){
             </ul>
           </li>
           <!-- Control Sidebar Toggle Button -->
-          
+
         </ul>
       </div>
     </nav>
@@ -82,10 +87,10 @@ while($x=mysql_fetch_array($sql)){
         </div>
       </div>
       <!-- search form -->
-      
+
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
-      
+
         <ul class="sidebar-menu">
         <li class="header" style=" font-size: 20px; color: white;"><p>MAIN NAVIGATION</p></li>
         <li class="treeview">
