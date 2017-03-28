@@ -5,12 +5,13 @@ $out='';
 $reg_id=$_SESSION['login_user'];
 $id=$_GET['id'];
 $current_date=date("Y-m-d");
-$s=mysql_fetch_array(mysql_query("select * from message where mail_id='$id'"));
-$company_id=$s['company_id'];
-$f=mysql_fetch_array(mysql_query("select * from company where c_id='$company_id'"));
+$s=mysql_fetch_array(mysql_query("select * from message where mail_id=$id"));
+$c_id=$s['c_id'];
+$f=mysql_fetch_array(mysql_query("select * from company where c_id=$c_id"));
 $company=$f['cname'];
 $deadline=$f['deadline'];
-$sql=mysql_query("select * from message_list where mail_id='$id' and user_id='$reg_id'");
+
+$sql=mysql_query("select * from message_list where mail_id=$id and u_id=$reg_id");
 $count=mysql_num_rows($sql);
 if($count==1){
 	$x=mysql_fetch_array($sql);
@@ -20,7 +21,7 @@ if($count==1){
 		if($current_date<=$deadline){
 		$status='y';
 		$round='1';
-		mysql_query("update message_list set register='$status',round='$round' where  mail_id='$id' and user_id='$reg_id'");
+		mysql_query("update message_list set register='$status',round='$round' where  mail_id=$id and u_id=$reg_id");
 		$out='
 			<h2 class="headline text-red"><i class="ion-android-done-all text-green"></i></h2>
 			<div class="error-content">
@@ -71,7 +72,7 @@ $out='
  </div>
 ';
 }
-
+$out.='<a href="placeCompany.php">GO back</a>'
 ?>
 <!DOCTYPE html>
 <html>

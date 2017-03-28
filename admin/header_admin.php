@@ -6,7 +6,7 @@ while($x=mysql_fetch_array($sql)){
     $gender=$x['gender'];
     $type=$x['type'];
     if($gender=="male"){$gender1='../male.png';}
-    else{$gender1='female.png';}
+    else{$gender1='../female.png';}
     if($type=="hsc"){$type1='academic_hsc.php';}
     else{$type1='academic_diploma.php';}
 }
@@ -110,32 +110,39 @@ while($x=mysql_fetch_array($sql)){
           </a>
           </li>
           <li class="treeview">
-        <a href="userValidate.php">
-          <i class="fa fa-briefcase"></i>
-          <span>User Validate</span>
-          <i class="fa fa-angle-left pull-right"></i>
-        </a>
-        </li>
-            <li class="treeview">
-          <a href="message.php">
-            <i class="fa fa-envelope"></i>
-            <span>Message</span>
-            <i class="fa fa-angle-left pull-right"></i>
-          </a>
+            <a href="userValidate.php">
+              <i class="fa fa-briefcase"></i>
+              <span>User Validate</span>
+              <i class="fa fa-angle-left pull-right"></i>
+            </a>
           </li>
-            <li class="treeview">
-          <a href="guest_registration.php">
-            <i class="fa  fa-registered"></i>
-            <span>Guest registration</span>
-            <i class="fa fa-angle-left pull-right"></i>
-          </a>
+          <li class="treeview">
+            <a href="message.php">
+              <i class="fa fa-envelope"></i>
+              <span>Message</span>
+              <i class="fa fa-angle-left pull-right"></i>
+            </a>
           </li>
-            <li class="treeview">
-          <a href="defaulter.php">
-            <i class="fa  fa-user"></i>
-            <span>Defaulter</span>
-            <i class="fa fa-angle-left pull-right"></i>
-          </a>
+          <li class="treeview">
+            <a href="companyRegisterStudent.php">
+              <i class="fa fa-envelope"></i>
+              <span>Company Reg Student</span>
+              <i class="fa fa-angle-left pull-right"></i>
+            </a>
+          </li>
+          <li class="treeview">
+            <a href="guest_registration.php">
+              <i class="fa  fa-registered"></i>
+              <span>Guest registration</span>
+              <i class="fa fa-angle-left pull-right"></i>
+            </a>
+          </li>
+          <li class="treeview">
+            <a href="defaulter.php">
+              <i class="fa  fa-user"></i>
+              <span>Defaulter</span>
+              <i class="fa fa-angle-left pull-right"></i>
+            </a>
           </li>
 
             <li class="treeview">

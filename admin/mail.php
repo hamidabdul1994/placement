@@ -137,11 +137,11 @@ else{
 								$placed=$c['cname'];
 								$type=$s['type'];
 								$hscpercent='';
-								if($type=='hsc'){$x=mysql_fetch_array(mysql_query("select * from hscmark where u_id='$u_id'"));
+								if($type=='hsc'){$x=mysql_fetch_array(mysql_query("select * from hscmark where u_id=$u_id"));
 									$hscpercent=$x['hscpercentage'];
 								}
 								else{
-									$x=mysql_fetch_array(mysql_query("select * from dipmarks where u_id='$u_id'"));
+									$x=mysql_fetch_array(mysql_query("select * from dipmarks where u_id=$u_id"));
 									$hscpercent=$x['diplomapercentage'];
 								}
 								$out.='

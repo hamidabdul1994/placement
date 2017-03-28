@@ -110,7 +110,7 @@ while ($a=mysql_fetch_array($sq)) {
   <!-- /.content-wrapper -->
   <footer class="main-footer">
 		<?php
-		include 'footer.php';
+		include '../footer.php';
 		 ?>
   </footer>
 
@@ -143,7 +143,7 @@ $(document).ready(function(){
 		$.ajax({
 			type:"POST",
 			url:"send_mail.php",
-			data:"to="+$('#to').val()+"&subject="+$("#sub").val()+"&message="+$("#message").val()+"&company="+$("#company").val(),
+			data:{"to":$('#to').val(),"subject":$("#sub").val(),"message":$("#message").val(),"company":$("#company").val()},
 			cache:false,
 			success:function(){
 				$("#to").val('');

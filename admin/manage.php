@@ -4,13 +4,14 @@ require_once'session_admin.php';
 $reg_id=$_SESSION['login_user'];
 $id=$_GET['id'];
 $sql=mysql_query("select * from company where c_id=$id");
+$count=mysql_num_rows($sql);
+if($count==0){
+	header("location:welcome_admin.php");
+}
 $a=mysql_fetch_array($sql);
 $out='';
 $round=$a['criteria'];
 $mid='';
-
-
-
 $out.='<ul class="nav nav-tabs">';
 for($i=1;$i<=$round;$i++){
 	$out.='<li><a data-toggle="tab" href="#'.$i.'">Round '.$i.'</a></li>';
@@ -58,7 +59,7 @@ for($i=1;$i<=$round;$i++){
 		<table class="table table-bordered table-striped">
            <thead>
                 <tr>
-                  <th>Reg_id</th>
+                  <th>u_id</th>
                   <th>Name</th>
                   <th>Branch</th>
                   <th>Div</th>
@@ -76,11 +77,11 @@ for($i=1;$i<=$round;$i++){
 }
 $l='';
 $mid='';
-$sqq=mysql_query("select * from message_list where mail_id='$mail_id' and round>'$round'");
+$sqq=mysql_query("select * from message_list where mail_id=$mail_id and round>'$round'");
 while ($z=mysql_fetch_array($sqq)) {
-	$user=$z['user_id'];
+	$user=$z['u_id'];
 	$mid.=$user.';';
-	$m=mysql_fetch_array(mysql_query("select * from student_details where u_id='$user'"));
+	$m=mysql_fetch_array(mysql_query("select * from student_details where u_id=$user"));
 	$l.='
 		<tr>
 			<td>'.$user.'</td>
@@ -158,21 +159,22 @@ $out.='
               <h3 class="box-title"><?php echo $a['cname'] ?> (<?php echo $a['ccode'] ?>)</h3>
                 <a href="welcome_admin.php"><button class="btn btn-primary pull-right">Back to Homepage</button></a>
             </div>
-         	<div class="box-body">
+      <div class="box-body">
 				<div class="row">
 					<div class="col-sm-12">
 						<?php echo $out ?>
 					</div>
 				</div>
             <!-- /.box-body -->
-          </div>
+      </div>
+		</div>
     </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
 		<?php
-		include 'footer.php';
+		include '../footer.php';
 		 ?>
   </footer>
 
@@ -224,7 +226,8 @@ $(document).on("click",".promote",function(){
 			url:"promote.php?"+id,
 			cache:false,
 			success:function(){
-				
+				<?php header("Refresh:0"); ?>
+
 				$("#"+aid).append('<label class="label label-success pull-right">Promoted</label>');
 			}
 		})

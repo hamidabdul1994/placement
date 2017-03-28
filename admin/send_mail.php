@@ -11,8 +11,10 @@ $message_id=$sq['mail_id'];
 $res=explode(";", $to);
 		foreach ($res as $email) {
 			if($email!="" && $email!=null){
-				$count=mysql_num_rows(mysql_query("select * from message_list where mail_id=$message_id and u_id=$reg"));
-				if($count==0){mysql_query("insert into message_list (mail_id,u_id)values($message_id,$email)");}
+				$count=mysql_num_rows(mysql_query("select * from message_list where mail_id=$message_id and u_id=$email"));
+				if($count==0){
+					mysql_query("insert into message_list (mail_id,u_id)values($message_id,$email)");
+				}
 			}
 		}
 ?>

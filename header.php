@@ -107,6 +107,13 @@ while($x=mysql_fetch_array($sql)){
             <i class="fa fa-angle-left pull-right"></i>
           </a>
           </li>
+          <li class="treeview">
+        <a href="placeCompany.php">
+          <i class="fa fa-institution"></i>
+          <span>Attend company</span>
+          <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        </li>
             <li class="treeview">
           <a href="<?php echo $type1 ?>">
             <i class="fa fa-book"></i>

@@ -1,10 +1,11 @@
 <?php
 include'../config.php';
 require_once'session_admin.php';
-
 $out='';
 $i=1;
-$sql=mysql_query("select * from user where valid=0");
+// $sql=mysql_query("SELECT  * FROM  user INNER JOIN message_list ON message_list.u_id = user.u_id ");
+$sql=mysql_query("SELECT  * FROM  user,message_list,company,message where message_list.u_id = user.u_id AND company.c_id = message.c_id AND message_list.mail_id=message.mail_id");
+echo mysql_error();
 $i = 1;
 while ($a=mysql_fetch_array($sql)) {
 	$out.='
@@ -12,14 +13,17 @@ while ($a=mysql_fetch_array($sql)) {
 		<td>'.$i.'</td>
 		<td>'.$a['uname'].'</td>
     <td>'.$a['smartcard_no'].'</td>
-    <td id="'.$a['u_id'].'"><button class="label label-warning col-sm-5 yes click-me" style="margin-right:10px">Accept</button><button class="label label-primary col-sm-5 no click-me">Reject</button> </td>
+    <td>'.$a['cname'].'</td>
+    <td>'.$a['round'].'</td>
+    <td>'.$a['register'].'</td>
+    <td id="'.$a['u_id'].'" cId="'.$a['c_id'].'" mailId="'.$a['mail_id'].'"><button class="label label-warning col-sm-5 sendMail click-me" style="margin-right:10px">Send Mail</button> </td>
 	</tr>
 	';
 	$i++;
 }
 if($i==1)
 {
-  $out='<tr><td colspan="3" align="center"><h2>No User For Validate</h2></td></tr>';
+  $out='<tr><td colspan="3" align="center"><h2>No Student Record For Validate</h2></td></tr>';
 }
 
 ?>
@@ -28,7 +32,7 @@ if($i==1)
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>User Validate</title>
+  <title>Student Registered For Compnay</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.5 -->
@@ -73,6 +77,9 @@ if($i==1)
                 	<th>Sr no.</th>
                 	<th>Username</th>
                 	<th>Smart Card No.</th>
+                  <th>Company Name</th>
+                  <th>Round</th>
+                  <th>Registered</th>
                 	<th>Action</th>
                 </thead>
                 <tbody>
@@ -120,17 +127,18 @@ if($i==1)
 <script src="../plugins/datatables/extra/vfs_fonts.js"></script>
 <script>
 $(document).ready(function(){
-  $(document).on("click",".yes",function(){
+  $(document).on("click",".sendMail",function(){
        	var id=$(this).parent().attr('id');
+        var mailId=$(this).parent().attr('mailId');
+
        	var status='y';
        	$.ajax({
        		type:"POST",
-       		url:"userValidateProcess.php?id="+id+"&s="+status,
+       		url:"send_mail.php?id="+id+"&s="+status,
           data:{id,s:status},
        		cache:false,
        		success:function(){
             <?php header("Refresh:0"); ?>
-       			$("#t"+id).remove();
        		}
        	})
        })
