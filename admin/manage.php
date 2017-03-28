@@ -3,7 +3,7 @@ include'config.php';
 require_once'session_admin.php';
 $reg_id=$_SESSION['login_user'];
 $id=$_GET['id'];
-$sql=mysql_query("select * from company where c_id='$id'");
+$sql=mysql_query("select * from company where c_id=$id");
 $a=mysql_fetch_array($sql);
 $out='';
 $round=$a['criteria'];
@@ -16,19 +16,19 @@ for($i=1;$i<=$round;$i++){
 	$out.='<li><a data-toggle="tab" href="#'.$i.'">Round '.$i.'</a></li>';
 }
 $out.='<li><a data-toggle="tab" href="#placed">Placed</a></li></ul><div class="tab-content">';
-$sq=mysql_query("select * from message where company_id='$id'");
+$sq=mysql_query("select * from message where c_id=$id");
 $b=mysql_fetch_array($sq);
 $mail_id=$b['mail_id'];
 for($i=1;$i<=$round;$i++){
-	$sql=mysql_query("select * from message_list where mail_id='$mail_id' and round>='$i'");
+	$sql=mysql_query("select * from message_list where mail_id=$mail_id and round>='$i'");
 	$x='';
 	$mid='';
 	while ($c=mysql_fetch_array($sql)) {
-		$user_id=$c['user_id'];
+		$user_id=$c['u_id'];
 		$mid.=$user_id.';';
 		$la='';
 
-		$s=mysql_fetch_array(mysql_query("select * from student_details where reg_id='$user_id'"));
+		$s=mysql_fetch_array(mysql_query("select * from student_details where u_id=$user_id"));
 		if($c['round']>$i){
 			$la='<label class="btn label-success pull-left">Promoted to Round '.($i+1).'</label>';
 		}
@@ -224,6 +224,7 @@ $(document).on("click",".promote",function(){
 			url:"promote.php?"+id,
 			cache:false,
 			success:function(){
+				
 				$("#"+aid).append('<label class="label label-success pull-right">Promoted</label>');
 			}
 		})

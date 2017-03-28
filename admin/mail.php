@@ -19,14 +19,14 @@ if($stname!=''|| $stname!=null){
 	while ($s=mysql_fetch_array($sql)) {
 		$x='';
 		$placed='';
-		$company_id=$s['company_id'];
-		$c=mysql_fetch_array(mysql_query("select * from company where c_id='$company_id'"));
+		$company_id=$s['c_id'];
+		$c=mysql_fetch_array(mysql_query("select * from company where c_id=$company_id"));
 		$placed=$c['cname'];
 		$u_id=$s['u_id'];
 		$to.=''.$u_id.';';
 		$type=$s['type'];
-		if($type=='hsc'){$x=mysql_fetch_array(mysql_query("select * from hscmark where u_id='$u_id'"));}
-		else{$x=mysql_fetch_array(mysql_query("select * from dipmarks where u_id='$u_id'"));}
+		if($type=='hsc'){$x=mysql_fetch_array(mysql_query("select * from hscmark where u_id=$u_id"));}
+		else{$x=mysql_fetch_array(mysql_query("select * from dipmarks where u_id=$u_id"));}
 		$out.='
 		<tr>
             <td>'.$i.'</td>
@@ -113,16 +113,16 @@ else{
 				$u_id=$v['u_id'];
 				$type=$v['type'];
 				if($type=="hsc"){
-					$sql=mysql_query("select * from hscmark where u_id='$u_id' and sscpercentage>='$ssc' and hscpercentage>='$hsc' and (degreepointer BETWEEN ".$degree0." AND ".$degree1.") and drops<='$drop' and livekt<='$livekt' and deadkt<='$deadkt' and attempts<='$attempts'   ");
+					$sql=mysql_query("select * from hscmark where u_id=$u_id and sscpercentage>='$ssc' and hscpercentage>='$hsc' and (degreepointer BETWEEN ".$degree0." AND ".$degree1.") and drops<='$drop' and livekt<='$livekt' and deadkt<='$deadkt' and attempts<='$attempts'   ");
 				}
 				if($type=="diploma"){
-					$sql=mysql_query("select * from dipmarks where u_id='$u_id' and sscpercentage>='$ssc' and diplomapercentage>='$diplomapercentage' and (degreepointer BETWEEN ".$sem3onward." AND ".$sem3onward1.") and drops<='$drop' and livekt<='$livekt' and deadkt<='$deadkt' and attempts<='$attempts' ");
+					$sql=mysql_query("select * from dipmarks where u_id=$u_id and sscpercentage>='$ssc' and diplomapercentage>='$diplomapercentage' and (degreepointer BETWEEN ".$sem3onward." AND ".$sem3onward1.") and drops<='$drop' and livekt<='$livekt' and deadkt<='$deadkt' and attempts<='$attempts' ");
 				}
 				$co=mysql_num_rows($sql);
 
 				if($co==1){
 					 if($isplaced!="b"){
-					 	$sq1=mysql_query("select * from student_details where u_id='$u_id' and placed='$isplaced'");
+					 	$sq1=mysql_query("select * from student_details where u_id=$u_id and placed='$isplaced'");
 					 	$c=mysql_num_rows($sq1);
 
 					 	if($c==1){
@@ -132,8 +132,8 @@ else{
 								$to.=''.$u_id.';';
 								$x='';
 								$placed='';
-								$company_id=$s['company_id'];
-								$c=mysql_fetch_array(mysql_query("select * from company where c_id='$company_id'"));
+								$company_id=$s['c_id'];
+								$c=mysql_fetch_array(mysql_query("select * from company where c_id=$company_id"));
 								$placed=$c['cname'];
 								$type=$s['type'];
 								$hscpercent='';
@@ -165,7 +165,7 @@ else{
 
 					 }
 					 else{
-					 	$sq1=mysql_query("select * from student_details where u_id='$u_id'");
+					 	$sq1=mysql_query("select * from student_details where u_id=$u_id");
 							$c=mysql_num_rows($sq1);
 						 	if($c==1){
 						 		while ($s=mysql_fetch_array($sq1)) {
@@ -173,14 +173,14 @@ else{
 									$to.=''.$u_id.';';
 									$x='';
                                     $placed='';
-                                    $company_id=$s['company_id'];
-                                    $c=mysql_fetch_array(mysql_query("select * from company where c_id='$company_id'"));
+                                    $company_id=$s['c_id'];
+                                    $c=mysql_fetch_array(mysql_query("select * from company where c_id=$company_id"));
                                     $placed=$c['cname'];
 
 									$type=$s['type'];
 									$hscpercent='';
-									if($type=='hsc'){$x=mysql_fetch_array(mysql_query("select * from hscmark where u_id='$u_id'"));$hscpercent=$x['hscpercentage'];}
-									else{$x=mysql_fetch_array(mysql_query("select * from dipmarks where u_id='$u_id'"));$hscpercent=$x['diplomapercentage'];}
+									if($type=='hsc'){$x=mysql_fetch_array(mysql_query("select * from hscmark where u_id=$u_id"));$hscpercent=$x['hscpercentage'];}
+									else{$x=mysql_fetch_array(mysql_query("select * from dipmarks where u_id=$u_id"));$hscpercent=$x['diplomapercentage'];}
 									$out.='
 									<tr>
 									<td>'.$i.'</td>
@@ -383,7 +383,7 @@ $(document).ready(function(){
 		$.ajax({
 			type:"POST",
 			url:"send_mail.php",
-			data:"to="+$('#to').val()+"&subject="+$("#sub").val()+"&message="+$("#message").val()+"&company="+$("#company").val(),
+			data:{"to":$('#to').val(),"subject":$("#sub").val(),"message":$("#message").val(),"company":$("#company").val()},
 			cache:false,
 			success:function(){
 				$("#to").val('');
@@ -404,6 +404,6 @@ $(document).ready(function(){
 })
 </script>
 <!-- AdminLTE for demo purposes -->
-<script src="../ dist/js/demo.js"></script>
+<script src="../dist/js/demo.js"></script>
 </body>
 </html>
